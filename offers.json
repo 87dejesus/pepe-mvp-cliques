@@ -1,16 +1,13 @@
-[
-  {
-    "id": 1,
-    "cidade": "Miami",
+{
+    "id": "1",
     "nome_predio": "Brickell Flatiron",
     "localizacao": "Downtown Miami, FL",
-    "quartos_banheiros": "2 Quartos / 2 Banheiros",
-    "valor_original": 2800.00,
+    "cidade": "Miami",
+    "quartos_banheiros": "2 Bedrooms / 2 Bathrooms",
+    "valor_original": 3000.00,
     "valor_com_desconto": 2550.00,
-    "economia_mensal": 250.00,
-    "tipo_desconto": "Primeiro Mês Grátis",
-    "url_oferta": "https://zillow.com/exemplo-1",
-    "foto_url": "/imagens/oferta-exemplo-1.jpg",
-    "ativa": true
-  }
-]
+    "tipo_desconto": "First Month Free",
+    "url_oferta": "https://www.example.com/brickell-flatiron",
+    "ativa": true,
+    "foto_url": "https://i.imgur.com/example_photo_of_flatiron.jpg"
+}
