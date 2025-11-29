@@ -75,7 +75,8 @@
 
     <div class="container">
         <div class="search-bar">
-            <input type="text" placeholder="Search by City (Miami, Orlando, etc.)"> </div>
+            <input type="text" placeholder="Search by City (Miami, Orlando, etc.)">
+        </div>
         
         <h2>🔥 Fresh Discount Offers!</h2>
         <div class="offers-grid" id="offers-list">
@@ -110,29 +111,23 @@
                 const card = document.createElement('div');
                 card.className = 'offer-card';
 
-                // --- TEXTO CORRIGIDO AQUI (Tradução dos termos dinâmicos) ---
-                
-                // Mapeamento de termos dinâmicos para inglês
-                let translatedRooms = offer.quartos_banheiros.replace('Quartos', 'Bedrooms').replace('Banheiros', 'Bathrooms');
-
-                // Tradução do tipo de desconto (assumindo que "Primeiro Mês Grátis" é o padrão)
-                let translatedDiscountType = offer.tipo_desconto.replace('Primeiro Mês Grátis', 'First Month Free');
+                // --- USANDO AS NOVAS CHAVES EM INGLÊS DO JSON ---
                 
                 const html = `
-                    <img src="${offer.foto_url || '/imagens/default.jpg'}" alt="Property photo in ${offer.cidade}">
+                    <img src="${offer.photo_url || '/imagens/default.jpg'}" alt="Property photo in ${offer.city}">
                     <div class="card-content">
-                        <h3>${offer.nome_predio}</h3>
-                        <p>📍 ${offer.localizacao}</p>
-                        <p class="quartos-banheiros">${translatedRooms || 'Details not provided'}</p>
+                        <h3>${offer.building_name}</h3>
+                        <p>📍 ${offer.location}</p>
+                        <p class="rooms-bathrooms">${offer.rooms_bathrooms || 'Details not provided'}</p>
                         
                         <div class="price-section">
-                            <p class="original-price">Original: $${offer.valor_original ? offer.valor_original.toFixed(2) : 'N/A'}</p>
-                            <p class="discounted-price">DISCOUNT: $${offer.valor_com_desconto ? offer.valor_com_desconto.toFixed(2) : 'N/A'}</p>
+                            <p class="original-price">Original: $${offer.original_price ? offer.original_price.toFixed(2) : 'N/A'}</p>
+                            <p class="discounted-price">DISCOUNT: $${offer.discounted_price ? offer.discounted_price.toFixed(2) : 'N/A'}</p>
                         </div>
                         
-                        <div class="discount-tag">${translatedDiscountType || 'Special Offer'}</div>
+                        <div class="discount-tag">${offer.discount_type || 'Special Offer'}</div>
                         
-                        <a href="${offer.url_oferta}" target="_blank" class="btn-offer" data-id="${offer.id}" data-city="${offer.cidade}">
+                        <a href="${offer.offer_url}" target="_blank" class="btn-offer" data-id="${offer.id}" data-city="${offer.city}">
                             VIEW OFFER (Tracked)
                         </a>
                     </div>
@@ -152,6 +147,7 @@
             // 3. LOAD JSON DATA
             fetch('offers.json')
                 .then(response => {
+                    // Trata erro de sintaxe no JSON
                     if (!response.ok) {
                         throw new Error('Error loading offers.json: ' + response.statusText);
                     }
@@ -160,7 +156,8 @@
                 .then(offers => {
                     offersList.innerHTML = ''; // Clears "Loading offers..."
                     
-                    const activeOffers = offers.filter(o => o.ativa);
+                    // Filtra ofertas ativas usando a nova chave 'is_active'
+                    const activeOffers = offers.filter(o => o.is_active);
                     
                     if (activeOffers.length === 0) {
                         offersList.innerHTML = '<p>No active offers found at the moment. Add offers to your offers.json!</p>';
@@ -173,7 +170,8 @@
                 })
                 .catch(error => {
                     console.error('Fatal error loading catalog:', error);
-                    offersList.innerHTML = '<p style="color:red; font-size:1.2em;">Oops! Error loading offers. Check the syntax of your offers.json file.</p>';
+                    // Mensagem de erro totalmente em inglês
+                    offersList.innerHTML = '<p style="color:red; font-size:1.2em;">Oops! Error loading offers. Please check the syntax of your offers.json file.</p>';
                 });
         });
     </script>
