@@ -21,7 +21,7 @@
 
         .container { max-width: 1200px; margin: 30px auto; padding: 0 20px; }
         
-        /* Search Bar Style (Visual Only) */
+        /* Search Bar Style */
         .search-bar { background-color: white; padding: 20px; border-radius: 8px; margin-bottom: 30px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; justify-content: center; }
         .search-bar input { padding: 12px; border: 1px solid #ccc; border-radius: 4px; width: 80%; max-width: 500px; font-size: 1em; }
 
@@ -75,8 +75,7 @@
 
     <div class="container">
         <div class="search-bar">
-            <input type="text" placeholder="Search by City (Miami, Orlando, etc.)" disabled>
-        </div>
+            <input type="text" placeholder="Search by City (Miami, Orlando, etc.)"> </div>
         
         <h2>🔥 Fresh Discount Offers!</h2>
         <div class="offers-grid" id="offers-list">
@@ -97,7 +96,7 @@
             function trackClick(offerId, cityName) {
                 // Sends an event to GA4
                 if (typeof gtag === 'function') {
-                   gtag('event', 'offer_click', { // Renamed event for clarity
+                   gtag('event', 'offer_click', {
                      'city_interest': cityName,
                      'offer_id': offerId
                    });
@@ -111,19 +110,27 @@
                 const card = document.createElement('div');
                 card.className = 'offer-card';
 
+                // --- TEXTO CORRIGIDO AQUI (Tradução dos termos dinâmicos) ---
+                
+                // Mapeamento de termos dinâmicos para inglês
+                let translatedRooms = offer.quartos_banheiros.replace('Quartos', 'Bedrooms').replace('Banheiros', 'Bathrooms');
+
+                // Tradução do tipo de desconto (assumindo que "Primeiro Mês Grátis" é o padrão)
+                let translatedDiscountType = offer.tipo_desconto.replace('Primeiro Mês Grátis', 'First Month Free');
+                
                 const html = `
                     <img src="${offer.foto_url || '/imagens/default.jpg'}" alt="Property photo in ${offer.cidade}">
                     <div class="card-content">
                         <h3>${offer.nome_predio}</h3>
                         <p>📍 ${offer.localizacao}</p>
-                        <p class="quartos-banheiros">${offer.quartos_banheiros || 'Details not provided'}</p>
+                        <p class="quartos-banheiros">${translatedRooms || 'Details not provided'}</p>
                         
                         <div class="price-section">
                             <p class="original-price">Original: $${offer.valor_original ? offer.valor_original.toFixed(2) : 'N/A'}</p>
                             <p class="discounted-price">DISCOUNT: $${offer.valor_com_desconto ? offer.valor_com_desconto.toFixed(2) : 'N/A'}</p>
                         </div>
                         
-                        <div class="discount-tag">${offer.tipo_desconto || 'Special Offer'}</div>
+                        <div class="discount-tag">${translatedDiscountType || 'Special Offer'}</div>
                         
                         <a href="${offer.url_oferta}" target="_blank" class="btn-offer" data-id="${offer.id}" data-city="${offer.cidade}">
                             VIEW OFFER (Tracked)
