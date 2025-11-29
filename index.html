@@ -1,12 +1,19 @@
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-8FRXP7DPWM"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-8FRXP7DPWM');
-</script>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pepe - Ofertas de aluguel com descontos reais</title>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8FRXP7DPWM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-8FRXP7DPWM');
+    </script>
+    
+    <style>
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; background-color: #f4f4f9; color: #333; }
         header { background-color: #007bff; color: white; padding: 25px; text-align: center; }
         header h1 { margin: 0; font-size: 1.8em; }
@@ -86,19 +93,17 @@
         document.addEventListener('DOMContentLoaded', () => {
             const offersList = document.getElementById('offers-list');
 
-            // 1. FUNÇÃO DE RASTREAMENTO (MVP)
+            // 1. FUNÇÃO DE RASTREAMENTO (GA4)
             function trackClick(offerId, cityName) {
-                // ESTA FUNÇÃO REGISTRA O CLIQUE NA CONTA GOOGLE ANALYTICS (GA4)
-                console.log(`CLIQUE RASTREADO! Oferta ID: ${offerId}, Cidade: ${cityName}`);
-                
-                // 🛑 SUBSTITUA este console.log PELO CÓDIGO REAL DO GA4 AQUI. 
-                // Exemplo (se gtag estiver instalado no <head>):
-                // if (typeof gtag === 'function') {
-                //    gtag('event', 'clique_oferta', {
-                //      'cidade_interesse': cityName,
-                //      'id_oferta': offerId
-                //    });
-                // }
+                // Esta função envia um evento para o GA4
+                if (typeof gtag === 'function') {
+                   gtag('event', 'clique_oferta', {
+                     'cidade_interesse': cityName,
+                     'id_oferta': offerId
+                   });
+                } else {
+                    console.log(`CLIQUE RASTREADO LOCALMENTE! Oferta ID: ${offerId}, Cidade: ${cityName}`);
+                }
             }
 
             // 2. FUNÇÃO PARA CRIAR O CARD (A parte visual de cada oferta)
