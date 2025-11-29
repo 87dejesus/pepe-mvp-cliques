@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en-US">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pepe - Ofertas de aluguel com descontos reais</title>
+    <title>Pepe - Real Discount Rental Offers</title>
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8FRXP7DPWM"></script>
     <script>
@@ -21,11 +21,11 @@
 
         .container { max-width: 1200px; margin: 30px auto; padding: 0 20px; }
         
-        /* Estilo da Busca (Apenas Visual) */
+        /* Search Bar Style (Visual Only) */
         .search-bar { background-color: white; padding: 20px; border-radius: 8px; margin-bottom: 30px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; justify-content: center; }
         .search-bar input { padding: 12px; border: 1px solid #ccc; border-radius: 4px; width: 80%; max-width: 500px; font-size: 1em; }
 
-        /* Layout dos Cards */
+        /* Card Layout */
         .offers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
         .offer-card { background-color: white; border-radius: 10px; box-shadow: 0 6px 12px rgba(0,0,0,0.15); overflow: hidden; transition: transform 0.2s; }
         .offer-card:hover { transform: translateY(-5px); }
@@ -37,7 +37,7 @@
 
         .price-section { margin-top: 10px; padding-top: 10px; border-top: 1px solid #eee; }
         .original-price { text-decoration: line-through; color: #999; font-size: 0.9em; }
-        .discounted-price { color: #dc3545; /* Cor de Destaque */ font-size: 1.6em; font-weight: bold; margin: 5px 0 10px; }
+        .discounted-price { color: #dc3545; /* Highlight Color */ font-size: 1.6em; font-weight: bold; margin: 5px 0 10px; }
         
         .discount-tag { background-color: #ffc107; color: #333; padding: 6px 12px; border-radius: 5px; display: inline-block; margin-bottom: 15px; font-weight: bold; font-size: 0.85em; }
         
@@ -45,7 +45,7 @@
             display: block; 
             width: 100%; 
             padding: 12px; 
-            background-color: #28a745; /* Botão Verde para Ação */
+            background-color: #28a745; /* Green Action Button */
             color: white; 
             text-align: center; 
             border: none; 
@@ -59,7 +59,7 @@
         }
         .btn-offer:hover { background-color: #1e7e34; }
 
-        /* Rodapé */
+        /* Footer */
         .footer-links { text-align: center; margin-top: 40px; padding: 25px 0; border-top: 1px solid #ddd; }
         .footer-links a { margin: 0 20px; text-decoration: none; color: #007bff; font-weight: 500; transition: color 0.2s; }
         .footer-links a:hover { color: #0056b3; }
@@ -69,23 +69,23 @@
 <body>
 
     <header>
-        <h1>Pepe - Ofertas de aluguel com descontos reais</h1>
-        <p>Sua fonte para as melhores promoções de imóveis de aluguel nos EUA.</p>
+        <h1>Pepe - Real Discount Rental Offers</h1>
+        <p>Your source for the best apartment and rental deals in the US.</p>
     </header>
 
     <div class="container">
         <div class="search-bar">
-            <input type="text" placeholder="Buscar por Cidade (Miami, Orlando, etc.)" disabled>
+            <input type="text" placeholder="Search by City (Miami, Orlando, etc.)" disabled>
         </div>
         
-        <h2>🔥 Ofertas Frescas com Desconto!</h2>
+        <h2>🔥 Fresh Discount Offers!</h2>
         <div class="offers-grid" id="offers-list">
-            <p>Carregando ofertas...</p>
+            <p>Loading offers...</p>
         </div>
 
         <div class="footer-links">
-            <a href="o-que-e-deal.html">O Que é um "Deal"?</a>
-            <a href="golpes-e-cuidados.html">Golpes e Cuidados ao Alugar</a>
+            <a href="o-que-e-deal.html">What is a "Deal"?</a>
+            <a href="golpes-e-cuidados.html">Scams and Rental Cautions</a>
         </div>
     </div>
 
@@ -93,71 +93,70 @@
         document.addEventListener('DOMContentLoaded', () => {
             const offersList = document.getElementById('offers-list');
 
-            // 1. FUNÇÃO DE RASTREAMENTO (GA4)
+            // 1. TRACKING FUNCTION (GA4)
             function trackClick(offerId, cityName) {
-                // Esta função envia um evento para o GA4
+                // Sends an event to GA4
                 if (typeof gtag === 'function') {
-                   gtag('event', 'clique_oferta', {
-                     'cidade_interesse': cityName,
-                     'id_oferta': offerId
+                   gtag('event', 'offer_click', { // Renamed event for clarity
+                     'city_interest': cityName,
+                     'offer_id': offerId
                    });
                 } else {
-                    console.log(`CLIQUE RASTREADO LOCALMENTE! Oferta ID: ${offerId}, Cidade: ${cityName}`);
+                    console.log(`CLICK TRACKED LOCALLY! Offer ID: ${offerId}, City: ${cityName}`);
                 }
             }
 
-            // 2. FUNÇÃO PARA CRIAR O CARD (A parte visual de cada oferta)
+            // 2. FUNCTION TO CREATE THE CARD
             function createOfferCard(offer) {
                 const card = document.createElement('div');
                 card.className = 'offer-card';
 
                 const html = `
-                    <img src="${offer.foto_url || '/imagens/default.jpg'}" alt="Foto do imóvel em ${offer.cidade}">
+                    <img src="${offer.foto_url || '/imagens/default.jpg'}" alt="Property photo in ${offer.cidade}">
                     <div class="card-content">
                         <h3>${offer.nome_predio}</h3>
                         <p>📍 ${offer.localizacao}</p>
-                        <p class="quartos-banheiros">${offer.quartos_banheiros || 'Detalhes não informados'}</p>
+                        <p class="quartos-banheiros">${offer.quartos_banheiros || 'Details not provided'}</p>
                         
                         <div class="price-section">
                             <p class="original-price">Original: $${offer.valor_original ? offer.valor_original.toFixed(2) : 'N/A'}</p>
-                            <p class="discounted-price">DESCONTO: $${offer.valor_com_desconto ? offer.valor_com_desconto.toFixed(2) : 'N/A'}</p>
+                            <p class="discounted-price">DISCOUNT: $${offer.valor_com_desconto ? offer.valor_com_desconto.toFixed(2) : 'N/A'}</p>
                         </div>
                         
-                        <div class="discount-tag">${offer.tipo_desconto || 'Oferta Especial'}</div>
+                        <div class="discount-tag">${offer.tipo_desconto || 'Special Offer'}</div>
                         
                         <a href="${offer.url_oferta}" target="_blank" class="btn-offer" data-id="${offer.id}" data-city="${offer.cidade}">
-                            VER OFERTA (e rastrear)
+                            VIEW OFFER (Tracked)
                         </a>
                     </div>
                 `;
                 card.innerHTML = html;
 
-                // Adiciona o RASTREAMENTO ao botão de clique
+                // Adds TRACKING to the click button
                 card.querySelector('.btn-offer').addEventListener('click', (e) => {
                     const id = e.target.getAttribute('data-id');
                     const city = e.target.getAttribute('data-city');
                     trackClick(id, city);
-                    // O link abrirá na nova aba por causa do target="_blank"
                 });
 
                 return card;
             }
 
-            // 3. CARREGAR OS DADOS DO JSON
+            // 3. LOAD JSON DATA
             fetch('offers.json')
                 .then(response => {
                     if (!response.ok) {
-                        throw new Error('Erro ao carregar offers.json: ' + response.statusText);
+                        throw new Error('Error loading offers.json: ' + response.statusText);
                     }
                     return response.json();
                 })
                 .then(offers => {
-                    offersList.innerHTML = ''; // Limpa "Carregando ofertas..."
+                    offersList.innerHTML = ''; // Clears "Loading offers..."
                     
                     const activeOffers = offers.filter(o => o.ativa);
                     
                     if (activeOffers.length === 0) {
-                        offersList.innerHTML = '<p>Nenhuma oferta ativa encontrada no momento. Adicione ofertas no seu offers.json!</p>';
+                        offersList.innerHTML = '<p>No active offers found at the moment. Add offers to your offers.json!</p>';
                         return;
                     }
                     
@@ -166,8 +165,8 @@
                     });
                 })
                 .catch(error => {
-                    console.error('Erro fatal ao carregar o catálogo:', error);
-                    offersList.innerHTML = '<p style="color:red; font-size:1.2em;">Ops! Erro ao carregar as ofertas. Verifique a sintaxe do seu arquivo offers.json.</p>';
+                    console.error('Fatal error loading catalog:', error);
+                    offersList.innerHTML = '<p style="color:red; font-size:1.2em;">Oops! Error loading offers. Check the syntax of your offers.json file.</p>';
                 });
         });
     </script>
