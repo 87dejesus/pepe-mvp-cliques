@@ -5,168 +5,256 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pepe - Real Discount Rental Offers</title>
     
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8FRXP7DPWM"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8FRPX7DPW9"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-8FRXP7DPWM');
+      gtag('config', 'G-8FRPX7DPW9');
     </script>
     
-    <style>/* Estilos do Rodapé */
-/* --- ESTILOS DO RODAPÉ CORRIGIDOS E FINAIS --- */
-.footer {
-    display: flex;
-    justify-content: space-around;
-    padding: 30px 50px;
-    background-color: #f8f8f8; /* Fundo cinza claro */
-    border-top: 1px solid #eee;
-    margin-top: 50px;
-}
-
-.footer-column {
-    flex-basis: 30%; /* Três colunas iguais */
-    padding: 0 10px;
-}
-
-.footer-column h3 {
-    font-size: 16px;
-    color: #007bff; /* Azul da marca */
-    margin-bottom: 15px;
-}
-
-.footer-column a {
-    display: block; /* Cada link em uma nova linha */
-    color: #333;
-    text-decoration: none;
-    margin-bottom: 8px;
-    font-size: 14px;
-}
-
-.footer-column a:hover {
-    text-decoration: underline;
-}
-
-.footer-copyright {
-    margin-top: 20px;
-    font-size: 12px;
-    color: #777;
-}
-
-/* Garante que o conteúdo empurre o rodapé para baixo */
-body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-.container {
-    flex-grow: 1; 
-}
-    flex-grow: 1; 
-}/* Adicionar novos estilos para o cabeçalho com o logo */
-.header-content {
-    display: flex; /* Para alinhar o logo e o texto lado a lado */
-    align-items: center; /* Centralizar verticalmente */
-    justify-content: center; /* Centralizar horizontalmente */
-    gap: 15px; /* Espaço entre o logo e o texto */
-    padding: 10px 20px;
-}
-
-.pepe-logo {
-    height: 80px; /* Tamanho do logo */
-    width: auto;
-    border-radius: 50%; 
-    background-color: white; 
-    padding: 5px; 
-}
-
-/* Ajustes para o texto do cabeçalho */
-header h1 {
-    font-size: 2em;
-    margin: 0;
-}
-
-header p {
-    font-size: 1.2em;
-    margin: 5px 0 0;
-}
-
-/* Media query para telas menores (opcional) */
-@media (max-width: 600px) {
-    .pepe-logo {
-        height: 60px;
-    }
-    header h1 {
-        font-size: 1.5em;
-    }
-    header p {
-        font-size: 1em;
-    }
-}
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; background-color: #f4f4f9; color: #333; }
-        header { background-color: #007bff; color: white; padding: 25px; text-align: center; }
-        header h1 { margin: 0; font-size: 1.8em; }
-        header p { margin: 5px 0 0; font-size: 1.1em; opacity: 0.9; }
-
-        .container { max-width: 1200px; margin: 30px auto; padding: 0 20px; }
-        
-        /* Search Bar Style */
-        .search-bar { background-color: white; padding: 20px; border-radius: 8px; margin-bottom: 30px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; justify-content: center; }
-        .search-bar input { padding: 12px; border: 1px solid #ccc; border-radius: 4px; width: 80%; max-width: 500px; font-size: 1em; }
-
-        /* Card Layout */
-        .offers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
-        .offer-card { background-color: white; border-radius: 10px; box-shadow: 0 6px 12px rgba(0,0,0,0.15); overflow: hidden; transition: transform 0.2s; }
-        .offer-card:hover { transform: translateY(-5px); }
-        .offer-card img { width: 100%; height: 220px; object-fit: cover; }
-        .card-content { padding: 18px; }
-        
-        .card-content h3 { margin-top: 0; margin-bottom: 5px; color: #007bff; }
-        .card-content p { margin-bottom: 8px; font-size: 0.95em; }
-
-        .price-section { margin-top: 10px; padding-top: 10px; border-top: 1px solid #eee; }
-        .original-price { text-decoration: line-through; color: #999; font-size: 0.9em; }
-        .discounted-price { color: #dc3545; /* Highlight Color */ font-size: 1.6em; font-weight: bold; margin: 5px 0 10px; }
-        
-        .discount-tag { background-color: #ffc107; color: #333; padding: 6px 12px; border-radius: 5px; display: inline-block; margin-bottom: 15px; font-weight: bold; font-size: 0.85em; }
-        
-        .btn-offer { 
-            display: block; 
-            width: 100%; 
-            padding: 12px; 
-            background-color: #28a745; /* Green Action Button */
-            color: white; 
-            text-align: center; 
-            border: none; 
-            border-radius: 5px; 
-            text-decoration: none; 
-            margin-top: 15px; 
-            font-weight: bold;
-            font-size: 1.1em;
-            cursor: pointer;
-            transition: background-color 0.2s;
+    <style>
+        /* Estilos Globais e Reset */
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            margin: 0; 
+            background-color: #f4f4f9; 
+            color: #333; 
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
-        .btn-offer:hover { background-color: #1e7e34; }
 
-        /* Footer */
-        .footer-links { text-align: center; margin-top: 40px; padding: 25px 0; border-top: 1px solid #ddd; }
-        .footer-links a { margin: 0 20px; text-decoration: none; color: #007bff; font-weight: 500; transition: color 0.2s; }
-        .footer-links a:hover { color: #0056b3; }
+        /* Container Principal */
+        .container { 
+            max-width: 1200px; 
+            margin: 30px auto; 
+            padding: 0 20px; 
+            flex-grow: 1;
+        }
+
+        /* Cabeçalho */
+        header { 
+            background-color: #007bff; 
+            color: white; 
+            padding: 25px; 
+            text-align: center; 
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px; 
+            padding: 10px 20px;
+        }
+
+        .pepe-logo {
+            height: 80px; 
+            width: auto;
+            border-radius: 50%;
+            background-color: white; 
+            padding: 5px; 
+        }
+
+        header h1 { 
+            font-size: 2em; 
+            margin: 0; 
+        }
+
+        header p { 
+            font-size: 1.2em; 
+            margin: 5px 0 0; 
+            opacity: 0.9;
+        }
+
+        /* Barra de Busca */
+        .search-bar {
+            background-color: white; 
+            padding: 20px; 
+            border-radius: 8px; 
+            margin-bottom: 30px; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+            display: flex; 
+            justify-content: center; 
+            text-align: center;
+        }
+
+        .search-bar input {
+            padding: 12px; 
+            border: 1px solid #ccc; 
+            border-radius: 4px; 
+            width: 80%; 
+            max-width: 500px; 
+            font-size: 1em;
+        }
+
+        /* Título das Ofertas */
+        h2 {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
         
+        /* Layout dos Cards */
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            padding-bottom: 50px;
+        }
+
+        .offer-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+
+        .offer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+        }
+
+        .offer-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .building-name {
+            font-size: 1.3em;
+            color: #007bff;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .location, .rooms-bathrooms {
+            font-size: 0.9em;
+            color: #777;
+            margin-bottom: 5px;
+        }
+
+        .price-section {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed #eee;
+        }
+
+        .original-price {
+            font-size: 0.9em;
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        .discounted-price {
+            font-size: 1.1em;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .discount-label {
+            display: inline-block;
+            background-color: #ffc107;
+            color: #333;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+        
+        .view-offer-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #28a745;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 15px;
+            font-weight: bold;
+            transition: background-color 0.2s;
+            cursor: pointer;
+        }
+
+        .view-offer-btn:hover {
+            background-color: #218838;
+        }
+        
+        /* --- Estilos do Rodapé (Final Correção) --- */
+        .footer {
+            display: flex;
+            justify-content: space-around;
+            padding: 30px 50px;
+            background-color: #f8f8f8;
+            border-top: 1px solid #eee;
+            margin-top: 50px;
+            width: 100%; /* Para garantir que ocupa a largura total */
+        }
+
+        .footer-column {
+            flex-basis: 30%;
+            padding: 0 10px;
+        }
+
+        .footer-column h3 {
+            font-size: 16px;
+            color: #007bff;
+            margin-bottom: 15px;
+        }
+
+        .footer-column a {
+            display: block;
+            color: #333;
+            text-decoration: none;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .footer-column a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-copyright {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #777;
+        }
+
+        /* Media Queries para Responsividade */
+        @media (max-width: 768px) {
+            .footer {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 30px 20px;
+            }
+            .footer-column {
+                flex-basis: 100%;
+                margin-bottom: 20px;
+            }
+        }
     </style>
 </head>
 <body>
 
     <header>
-    <div class="header-content">
-        <img src="/imagens/pepe ipad.jpg" alt="Pepe com iPad Logo" class="pepe-logo"> 
-        <div>
-            <h1>Pepe - Real Discount Rental Offers</h1>
-            <p>Your source for the best apartment and rental deals in the US.</p>
+        <div class="header-content">
+            <img src="/imagens/pepe ipad.jpg" alt="Pepe the Alligator Logo" class="pepe-logo"> 
+            <div>
+                <h1>Pepe - Real Discount Rental Offers</h1>
+                <p>Your source for the best apartment and rental deals in the US.</p>
+            </div>
         </div>
-    </div>
-</header>
+    </header>
 
     <div class="container">
         <div class="search-bar">
@@ -174,114 +262,82 @@ header p {
         </div>
         
         <h2>🔥 Fresh Discount Offers!</h2>
-        <div class="offers-grid" id="offers-list">
-            <p>Loading offers...</p>
+
+        <div class="offers-grid" id="offers-container">
+            </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-column">
+            <h3>Pepe Deals</h3>
+            <a href="about-us.html">About Us</a>
+            <p class="footer-copyright">
+                © 2025 Pepe Deals. All rights reserved.
+            </p>
         </div>
-
- <footer class="footer">
-    <div class="footer-column">
-    <h3>Pepe Deals</h3>
-    <a href="about-us.html">About Us</a> <p class="footer-copyright">
-        © 2025 Pepe Deals. All rights reserved.
-    </p>
-</div>
-        </p>
-    </div>
-    <div class="footer-column">
-        <h3>Help & Safety</h3>
-        <a href="how-we-save-you-money.html">How We Help You Save Money</a> <a href="scams-and-cautions.html">Scams and Rental Cautions</a> </div>
-    <div class="footer-column">
-        <h3>Legal</h3>
-        <a href="terms-of-use.html">Terms of Use</a>
-        <a href="privacy-policy.html">Privacy Policy</a>
-    </div>
-</footer>
-
+        <div class="footer-column">
+            <h3>Help & Safety</h3>
+            <a href="how-we-save-you-money.html">How We Help You Save Money</a>
+            <a href="scams-and-cautions.html">Scams and Rental Cautions</a>
+        </div>
+        <div class="footer-column">
+            <h3>Legal</h3>
+            <a href="terms-of-use.html">Terms of Use</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+        </div>
+    </footer>
 
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const offersList = document.getElementById('offers-list');
-
-            // 1. TRACKING FUNCTION (GA4)
-            function trackClick(offerId, cityName) {
-                // Sends an event to GA4
-                if (typeof gtag === 'function') {
-                   gtag('event', 'offer_click', {
-                     'city_interest': cityName,
-                     'offer_id': offerId
-                   });
-                } else {
-                    console.log(`CLICK TRACKED LOCALLY! Offer ID: ${offerId}, City: ${cityName}`);
-                }
-            }
-
-            // 2. FUNCTION TO CREATE THE CARD
-            function createOfferCard(offer) {
-                const card = document.createElement('div');
-                card.className = 'offer-card';
-
-                // --- USANDO AS NOVAS CHAVES EM INGLÊS DO JSON ---
-                
-                const html = `
-                    <img src="${offer.photo_url || '/imagens/default.jpg'}" alt="Property photo in ${offer.city}">
-                    <div class="card-content">
-                        <h3>${offer.building_name}</h3>
-                        <p>📍 ${offer.location}</p>
-                        <p class="rooms-bathrooms">${offer.rooms_bathrooms || 'Details not provided'}</p>
-                        
-                        <div class="price-section">
-                            <p class="original-price">Original: $${offer.original_price ? offer.original_price.toFixed(2) : 'N/A'}</p>
-                            <p class="discounted-price">DISCOUNT: $${offer.discounted_price ? offer.discounted_price.toFixed(2) : 'N/A'}</p>
-                        </div>
-                        
-                        <div class="discount-tag">${offer.discount_type || 'Special Offer'}</div>
-                        
-                        <a href="${offer.offer_url}" target="_blank" class="btn-offer" data-id="${offer.id}" data-city="${offer.city}">
-                            VIEW OFFER (Tracked)
-                        </a>
-                    </div>
-                `;
-                card.innerHTML = html;
-
-                // Adds TRACKING to the click button
-                card.querySelector('.btn-offer').addEventListener('click', (e) => {
-                    const id = e.target.getAttribute('data-id');
-                    const city = e.target.getAttribute('data-city');
-                    trackClick(id, city);
-                });
-
-                return card;
-            }
-
-            // 3. LOAD JSON DATA
             fetch('offers.json')
                 .then(response => {
-                    // Trata erro de sintaxe no JSON
                     if (!response.ok) {
-                        throw new Error('Error loading offers.json: ' + response.statusText);
+                        throw new Error('Network response was not ok');
                     }
                     return response.json();
                 })
                 .then(offers => {
-                    offersList.innerHTML = ''; // Clears "Loading offers..."
+                    const container = document.getElementById('offers-container');
+                    container.innerHTML = ''; // Limpa o conteúdo inicial
                     
-                    // Filtra ofertas ativas usando a nova chave 'is_active'
-                    const activeOffers = offers.filter(o => o.is_active);
-                    
+                    // Filtra apenas as ofertas ativas (no seu caso, só a Oferta 1)
+                    const activeOffers = offers.filter(offer => offer.is_active);
+
                     if (activeOffers.length === 0) {
-                        offersList.innerHTML = '<p>No active offers found at the moment. Add offers to your offers.json!</p>';
+                        container.innerHTML = '<p style="text-align: center; grid-column: 1 / -1;">No active offers found at the moment. Add offers to your offers.json.</p>';
                         return;
                     }
-                    
+
                     activeOffers.forEach(offer => {
-                        offersList.appendChild(createOfferCard(offer));
+                        const card = document.createElement('div');
+                        card.className = 'offer-card';
+
+                        const cardHtml = `
+                            <img src="${offer.photo_url}" alt="${offer.building_name} image">
+                            <div class="card-content">
+                                <p class="building-name">${offer.building_name}</p>
+                                <p class="location">${offer.location}</p>
+                                <p class="rooms-bathrooms">${offer.rooms_bathrooms}</p>
+                                
+                                <div class="price-section">
+                                    <p class="original-price">Original: $${offer.original_price.toFixed(2)}</p>
+                                    <p class="discounted-price">DISCOUNT: $${offer.discounted_price.toFixed(2)}</p>
+                                    <span class="discount-label">${offer.discount_type}</span>
+                                </div>
+                                
+                                <a href="${offer.offer_url}" target="_blank" class="view-offer-btn" onclick="gtag('event', 'click', {'event_category': 'Offer', 'event_label': '${offer.building_name}', 'value': ${offer.monthly_savings}});">
+                                    VIEW OFFER (Tracked)
+                                </a>
+                            </div>
+                        `;
+                        card.innerHTML = cardHtml;
+                        container.appendChild(card);
                     });
                 })
                 .catch(error => {
-                    console.error('Fatal error loading catalog:', error);
-                    // Mensagem de erro totalmente em inglês
-                    offersList.innerHTML = '<p style="color:red; font-size:1.2em;">Oops! Error loading offers. Please check the syntax of your offers.json file.</p>';
+                    console.error('Error loading offers:', error);
+                    document.getElementById('offers-container').innerHTML = '<p style="text-align: center; color: red; grid-column: 1 / -1;">Oops! Error loading offers. Please check the syntax of your offers.json file.</p>';
                 });
         });
     </script>
