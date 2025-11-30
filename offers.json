@@ -57,16 +57,16 @@
   },
   {
     "id": "5",
-    "city": "Miami",
-    "building_name": "The Mark at Brickell",
-    "location": "Brickell Key Drive, FL",
-    "rooms_bathrooms": "3 Bedrooms / 3 Bathrooms",
-    "original_price": 3500.00,
-    "discounted_price": 3150.00,
-    "monthly_savings": 350.00,
-    "discount_type": "$350 Off Per Month",
-    "offer_url": "https://zillow.com/the-mark-3",
-    "photo_url": "/imagens/mark.jpg",
+    "city": "Pompano Beach",
+    "building_name": "The Atlantic by Soleste",
+    "location": "Pompano Beach, FL",
+    "rooms_bathrooms": "Studio / 1 Bathroom",
+    "original_price": 1908.00,
+    "discounted_price": 1908.00,
+    "monthly_savings": 3816.00,
+    "discount_type": "2 Months Free",
+    "offer_url": "https://www.apartments.com/the-atlantic-by-soleste-pompano-beach-fl/29wsy58/",
+    "photo_url": "/imagens/atlantic.jpg",
     "is_active": true
   }
 ]
