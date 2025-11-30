@@ -1,35 +1,72 @@
 [
   {
-    "id": 1,
-    "building": "Opera Tower",
+    "id": "1",
+    "city": "Miami",
+    "building_name": "Brickell Flatiron",
+    "location": "Downtown Miami, FL",
+    "rooms_bathrooms": "2 Bedrooms / 2 Bathrooms",
+    "original_price": 2800.00,
+    "discounted_price": 2550.00,
+    "monthly_savings": 250.00,
+    "discount_type": "First Month Free",
+    "offer_url": "https://zillow.com/exemplo-1",
+    "photo_url": "/imagens/miami.jpg",
+    "is_active": true
+  },
+  {
+    "id": "2",
+    "city": "Miami",
+    "building_name": "SLS Lux Brickell",
+    "location": "Brickell Avenue, FL",
+    "rooms_bathrooms": "1 Bedroom / 1 Bathroom",
+    "original_price": 2200.00,
+    "discounted_price": 1980.00,
+    "monthly_savings": 220.00,
+    "discount_type": "First Month Free",
+    "offer_url": "https://zillow.com/exemplo-2-sls",
+    "photo_url": "/imagens/sls.jpg",
+    "is_active": true
+  },
+  {
+    "id": "3",
+    "city": "Miami",
+    "building_name": "Opera Tower",
     "location": "Biscayne Bay, FL",
-    "rooms": "1 Bedroom / 1 Bathroom",
+    "rooms_bathrooms": "1 Bedroom / 1 Bathroom",
     "original_price": 2500.00,
     "discounted_price": 2250.00,
+    "monthly_savings": 250.00,
     "discount_type": "$250 Off Per Month",
-    "click_url": "https://zillow.com/opera-tower-1",
-    "photo_url": "/imagens/opera.jpg"
+    "offer_url": "https://zillow.com/opera-tower-1",
+    "photo_url": "/imagens/opera.jpg",
+    "is_active": true
   },
   {
-    "id": 2,
-    "building": "Icon Brickell",
+    "id": "4",
+    "city": "Miami",
+    "building_name": "Icon Brickell",
     "location": "Brickell, FL",
-    "rooms": "2 Bedrooms / 2 Bathrooms",
+    "rooms_bathrooms": "2 Bedrooms / 2 Bathrooms",
     "original_price": 3800.00,
     "discounted_price": 3420.00,
+    "monthly_savings": 380.00,
     "discount_type": "10% Off",
-    "click_url": "https://zillow.com/icon-brickell-2",
-    "photo_url": "/imagens/icon.jpg"
+    "offer_url": "https://zillow.com/icon-brickell-2",
+    "photo_url": "/imagens/icon.jpg",
+    "is_active": true
   },
   {
-    "id": 3,
-    "building": "The Mark at Brickell",
+    "id": "5",
+    "city": "Miami",
+    "building_name": "The Mark at Brickell",
     "location": "Brickell Key Drive, FL",
-    "rooms": "3 Bedrooms / 3 Bathrooms",
+    "rooms_bathrooms": "3 Bedrooms / 3 Bathrooms",
     "original_price": 3500.00,
     "discounted_price": 3150.00,
+    "monthly_savings": 350.00,
     "discount_type": "$350 Off Per Month",
-    "click_url": "https://zillow.com/the-mark-3",
-    "photo_url": "/imagens/mark.jpg"
+    "offer_url": "https://zillow.com/the-mark-3",
+    "photo_url": "/imagens/mark.jpg",
+    "is_active": true
   }
 ]
