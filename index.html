@@ -100,25 +100,12 @@
         /* Layout dos Cards */
         .offers-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            /* Garante que o grid use o espaço disponível, centralizando-o */
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            justify-content: center;
             gap: 25px;
             padding-bottom: 50px;
-            justify-content: center; /* Centraliza a grade no container */
         }
-        
-        /* Força a centralização de um único card, se necessário */
-        @media (min-width: 600px) {
-            .offers-grid {
-                grid-template-columns: 1fr;
-                max-width: 400px; /* Largura máxima para um único card centralizado */
-                margin-left: auto;
-                margin-right: auto;
-            }
-            .offers-grid > * {
-                width: 100%;
-            }
-        }
-
 
         .offer-card {
             background-color: white;
@@ -126,6 +113,26 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             overflow: hidden;
             transition: transform 0.2s;
+            max-width: 400px; /* Limita a largura máxima do card para centralização */
+            justify-self: center; /* Centraliza o card dentro da célula do grid */
+        }
+        
+        /* ... (O restante dos estilos do card, como hover, img, card-content, etc. permanece igual) ... */
+        
+        /* Media Queries (APENAS O AJUSTE PARA O CARD) */
+        @media (max-width: 768px) {
+            .container { 
+                padding: 0 10px; /* Reduz o padding lateral em mobile */
+            }
+            .offers-grid {
+                grid-template-columns: 1fr; /* Força um card por linha no celular */
+                padding: 0;
+            }
+            .offer-card {
+                width: 95%; /* Usa quase toda a largura, com margem */
+                margin: 0 auto; /* Centraliza o card na tela do celular */
+            }
+            /* ... (O restante da media query para o footer deve permanecer) ... */
         }
 
         .offer-card:hover {
