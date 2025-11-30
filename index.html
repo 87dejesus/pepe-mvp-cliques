@@ -13,7 +13,46 @@
       gtag('config', 'G-8FRXP7DPWM');
     </script>
     
-    <style>
+    <style>/* Adicionar novos estilos para o cabeçalho com o logo */
+.header-content {
+    display: flex; /* Para alinhar o logo e o texto lado a lado */
+    align-items: center; /* Centralizar verticalmente */
+    justify-content: center; /* Centralizar horizontalmente */
+    gap: 15px; /* Espaço entre o logo e o texto */
+    padding: 10px 20px;
+}
+
+.pepe-logo {
+    height: 80px; /* Tamanho do logo */
+    width: auto;
+    border-radius: 50%; 
+    background-color: white; 
+    padding: 5px; 
+}
+
+/* Ajustes para o texto do cabeçalho */
+header h1 {
+    font-size: 2em;
+    margin: 0;
+}
+
+header p {
+    font-size: 1.2em;
+    margin: 5px 0 0;
+}
+
+/* Media query para telas menores (opcional) */
+@media (max-width: 600px) {
+    .pepe-logo {
+        height: 60px;
+    }
+    header h1 {
+        font-size: 1.5em;
+    }
+    header p {
+        font-size: 1em;
+    }
+}
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; background-color: #f4f4f9; color: #333; }
         header { background-color: #007bff; color: white; padding: 25px; text-align: center; }
         header h1 { margin: 0; font-size: 1.8em; }
@@ -69,9 +108,14 @@
 <body>
 
     <header>
-        <h1>Pepe - Real Discount Rental Offers</h1>
-        <p>Your source for the best apartment and rental deals in the US.</p>
-    </header>
+    <div class="header-content">
+        <img src="/imagens/pepe ipad.jpg" alt="Pepe com iPad Logo" class="pepe-logo"> 
+        <div>
+            <h1>Pepe - Real Discount Rental Offers</h1>
+            <p>Your source for the best apartment and rental deals in the US.</p>
+        </div>
+    </div>
+</header>
 
     <div class="container">
         <div class="search-bar">
