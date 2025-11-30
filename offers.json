@@ -55,7 +55,6 @@
     "photo_url": "/imagens/icon.jpg",
     "is_active": true
   },
-  
   {
     "id": "5",
     "city": "Pompano Beach",
@@ -64,8 +63,8 @@
     "rooms_bathrooms": "Studio / 1 Bathroom",
     "original_price": 1908.00,
     "discounted_price": 1908.00,
-    "monthly_savings": 0.00, // <-- Volta para zero ou para a economia MENSAL DILUÍDA (se for para mostrar a economia do mês)
-    "discount_type": "2 Meses Grátis! ($3816.00 Total Savings)", // <-- Aqui colocamos o texto completo
+    "monthly_savings": 3816.00,
+    "discount_type": "2 Meses Grátis! ($3816.00 Total Savings)",
     "offer_url": "https://www.apartments.com/the-atlantic-by-soleste-pompano-beach-fl/29wsy58/",
     "photo_url": "/imagens/atlantic.jpg",
     "is_active": true
