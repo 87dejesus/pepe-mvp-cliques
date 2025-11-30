@@ -12,5 +12,20 @@
     "offer_url": "https://zillow.com/exemplo-1",
     "photo_url": "/imagens/miami.jpg",
     "is_active": true
+  },  <-- ATENÇÃO: Adicione uma VÍRGULA aqui!
+
+  {
+    "id": "2",
+    "city": "Miami",
+    "building_name": "SLS Lux Brickell",
+    "location": "Brickell Avenue, FL",
+    "rooms_bathrooms": "1 Bedroom / 1 Bathroom",
+    "original_price": 2200.00,
+    "discounted_price": 1980.00,
+    "monthly_savings": 220.00,
+    "discount_type": "First Month Free",
+    "offer_url": "https://zillow.com/exemplo-2-sls",
+    "photo_url": "/imagens/sls.jpg",  <-- Cuidado com o nome do novo arquivo
+    "is_active": true
   }
 ]
