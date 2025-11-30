@@ -204,7 +204,8 @@
             background-color: #218838;
         }
         
-        /* --- Estilos do Rodapé (FINALMENTE CORRIGIDOS PARA MOBILE) --- */
+       /* --- ESTILOS DO RODAPÉ (AJUSTE FINAL DE ALINHAMENTO) --- */
+
         .footer {
             display: flex;
             justify-content: space-around;
@@ -213,12 +214,13 @@
             border-top: 1px solid #eee;
             margin-top: 50px;
             width: 100%;
+            text-align: left; /* Garante alinhamento à esquerda por padrão */
         }
 
         .footer-column {
             flex-basis: 30%;
             padding: 0 10px;
-            text-align: left; 
+            /* Removemos o text-align: left daqui para evitar conflitos */
         }
 
         .footer-column h3 {
@@ -226,26 +228,10 @@
             color: #007bff;
             margin-bottom: 15px;
         }
+        
+        /* ... (O restante dos estilos do rodapé, como .footer-column a, .footer-copyright, etc. permanece igual) ... */
 
-        .footer-column a {
-            display: block;
-            color: #333;
-            text-decoration: none;
-            margin-bottom: 8px;
-            font-size: 14px;
-        }
-
-        .footer-column a:hover {
-            text-decoration: underline;
-        }
-
-        .footer-copyright {
-            margin-top: 20px;
-            font-size: 12px;
-            color: #777;
-        }
-
-        /* Media Query para Responsividade (CORREÇÃO DE LAYOUT E CENTRALIZAÇÃO) */
+        /* Media Query para Responsividade (Garante Centralização no Mobile) */
         @media (max-width: 768px) {
             .footer {
                 flex-direction: column;
@@ -253,6 +239,13 @@
                 padding: 30px 20px;
                 text-align: center; /* Centraliza todo o texto do footer em telas pequenas */
             }
+            .footer-column {
+                flex-basis: 100%;
+                margin-bottom: 25px;
+                padding: 0;
+            }
+            /* ... (O restante dos estilos mobile permanece igual) ... */
+        }
             .footer-column {
                 flex-basis: 100%;
                 margin-bottom: 25px;
