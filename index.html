@@ -13,7 +13,55 @@
       gtag('config', 'G-8FRXP7DPWM');
     </script>
     
-    <style>/* Adicionar novos estilos para o cabeçalho com o logo */
+    <style>/* Estilos do Rodapé */
+.footer {
+    display: flex;
+    justify-content: space-around;
+    padding: 30px 50px;
+    background-color: #f8f8f8; /* Fundo cinza claro */
+    border-top: 1px solid #eee;
+    margin-top: 50px;
+}
+
+.footer-column {
+    flex-basis: 30%; /* Três colunas iguais */
+    padding: 0 10px;
+}
+
+.footer-column h3 {
+    font-size: 16px;
+    color: #007bff; /* Azul da marca */
+    margin-bottom: 15px;
+}
+
+.footer-column a {
+    display: block; /* Cada link em uma nova linha */
+    color: #333;
+    text-decoration: none;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.footer-column a:hover {
+    text-decoration: underline;
+}
+
+.footer-copyright {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #777;
+}
+
+/* Garante que o conteúdo empurre o rodapé para baixo */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    flex-grow: 1; 
+}/* Adicionar novos estilos para o cabeçalho com o logo */
 .header-content {
     display: flex; /* Para alinhar o logo e o texto lado a lado */
     align-items: center; /* Centralizar verticalmente */
@@ -127,11 +175,25 @@ header p {
             <p>Loading offers...</p>
         </div>
 
-        <div class="footer-links">
-            <a href="o-que-e-deal.html">What is a "Deal"?</a>
-            <a href="golpes-e-cuidados.html">Scams and Rental Cautions</a>
-        </div>
+        <footer class="footer">
+    <div class="footer-column">
+        <h3>Pepe Ofertas</h3>
+        <a href="#">Quem Somos Nós (em breve)</a>
+        <p class="footer-copyright">
+            © 2025 Pepe Deals. Todos os direitos reservados.
+        </p>
     </div>
+    <div class="footer-column">
+        <h3>Ajuda e Segurança</h3>
+        <a href="o-que-e-deal.html">O que é um "Deal"?</a>
+        <a href="golpes-e-cuidados.html">Golpes e Cuidados ao Alugar</a>
+    </div>
+    <div class="footer-column">
+        <h3>Legal</h3>
+        <a href="#">Termos de Uso (em breve)</a>
+        <a href="#">Política de Privacidade (em breve)</a>
+    </div>
+</footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
