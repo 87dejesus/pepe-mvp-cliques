@@ -97,14 +97,17 @@
             text-align: center;
         }
         
-        /* Layout dos Cards */
+        /* --- LAYOUT DO GRID (CORRIGIDO) --- */
         .offers-grid {
             display: grid;
-            /* Garante que o grid use o espaço disponível, centralizando-o */
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            justify-content: center;
+            /* Permite 1, 2 ou 3 colunas, adaptando ao espaço */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
             gap: 25px;
             padding-bottom: 50px;
+            /* CENTRALIZA OS CARDS QUANDO HÁ MENOS QUE O MÁXIMO DE COLUNAS */
+            justify-items: center; 
+            max-width: 1200px; 
+            margin: 0 auto; 
         }
 
         .offer-card {
@@ -113,26 +116,9 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             overflow: hidden;
             transition: transform 0.2s;
-            max-width: 400px; /* Limita a largura máxima do card para centralização */
-            justify-self: center; /* Centraliza o card dentro da célula do grid */
-        }
-        
-        /* ... (O restante dos estilos do card, como hover, img, card-content, etc. permanece igual) ... */
-        
-        /* Media Queries (APENAS O AJUSTE PARA O CARD) */
-        @media (max-width: 768px) {
-            .container { 
-                padding: 0 10px; /* Reduz o padding lateral em mobile */
-            }
-            .offers-grid {
-                grid-template-columns: 1fr; /* Força um card por linha no celular */
-                padding: 0;
-            }
-            .offer-card {
-                width: 95%; /* Usa quase toda a largura, com margem */
-                margin: 0 auto; /* Centraliza o card na tela do celular */
-            }
-            /* ... (O restante da media query para o footer deve permanecer) ... */
+            /* Impede que o card fique grande demais em telas wide */
+            max-width: 400px; 
+            width: 100%; /* Ocupa 100% da célula do grid (até 400px) */
         }
 
         .offer-card:hover {
@@ -211,8 +197,7 @@
             background-color: #218838;
         }
         
-       /* --- ESTILOS DO RODAPÉ (AJUSTE FINAL DE ALINHAMENTO) --- */
-
+        /* --- Estilos do Rodapé (OK) --- */
         .footer {
             display: flex;
             justify-content: space-around;
@@ -221,13 +206,12 @@
             border-top: 1px solid #eee;
             margin-top: 50px;
             width: 100%;
-            text-align: left; /* Garante alinhamento à esquerda por padrão */
+            text-align: left; 
         }
 
         .footer-column {
             flex-basis: 30%;
             padding: 0 10px;
-            /* Removemos o text-align: left daqui para evitar conflitos */
         }
 
         .footer-column h3 {
@@ -235,24 +219,47 @@
             color: #007bff;
             margin-bottom: 15px;
         }
-        
-        /* ... (O restante dos estilos do rodapé, como .footer-column a, .footer-copyright, etc. permanece igual) ... */
 
-        /* Media Query para Responsividade (Garante Centralização no Mobile) */
+        .footer-column a {
+            display: block;
+            color: #333;
+            text-decoration: none;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .footer-column a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-copyright {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #777;
+        }
+
+        /* Media Query para Responsividade (CORREÇÃO DE LAYOUT) */
         @media (max-width: 768px) {
+            .container { 
+                padding: 0 10px; 
+            }
+            .offers-grid {
+                /* Força uma coluna e garante que o card ocupe o espaço */
+                grid-template-columns: 1fr; 
+                gap: 20px;
+            }
+            .offer-card {
+                /* O card agora ocupa 100% da coluna (1fr) */
+                width: 100%;
+                justify-self: stretch; 
+            }
+            
             .footer {
                 flex-direction: column;
                 align-items: center; 
                 padding: 30px 20px;
-                text-align: center; /* Centraliza todo o texto do footer em telas pequenas */
+                text-align: center; 
             }
-            .footer-column {
-                flex-basis: 100%;
-                margin-bottom: 25px;
-                padding: 0;
-            }
-            /* ... (O restante dos estilos mobile permanece igual) ... */
-        }
             .footer-column {
                 flex-basis: 100%;
                 margin-bottom: 25px;
