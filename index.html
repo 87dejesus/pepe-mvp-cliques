@@ -190,6 +190,7 @@
         }
         
         /* --- Estilos do Rodapé (Final Correção) --- */
+        /* --- Estilos do Rodapé FINAL (CORREÇÃO DE MOBILE) --- */
         .footer {
             display: flex;
             justify-content: space-around;
@@ -197,12 +198,14 @@
             background-color: #f8f8f8;
             border-top: 1px solid #eee;
             margin-top: 50px;
-            width: 100%; /* Para garantir que ocupa a largura total */
+            width: 100%;
         }
 
         .footer-column {
             flex-basis: 30%;
             padding: 0 10px;
+            /* Garante que o conteúdo da coluna esteja alinhado ao centro no mobile */
+            text-align: left; 
         }
 
         .footer-column h3 {
@@ -219,23 +222,32 @@
             font-size: 14px;
         }
 
-        .footer-column a:hover {
-            text-decoration: underline;
-        }
-
+        /* Estilos de Copyright e Links */
         .footer-copyright {
             margin-top: 20px;
             font-size: 12px;
             color: #777;
         }
-
-        /* Media Queries para Responsividade */
+        
+        /* Media Query para Responsividade (CORRIGIDO) */
         @media (max-width: 768px) {
             .footer {
                 flex-direction: column;
-                align-items: center;
-                text-align: center;
+                align-items: center; /* Centraliza a coluna no container principal */
                 padding: 30px 20px;
+                text-align: center; /* Centraliza todo o texto em telas pequenas */
+            }
+            .footer-column {
+                flex-basis: 100%;
+                margin-bottom: 25px;
+                padding: 0;
+            }
+            .footer-column:nth-child(2), 
+            .footer-column:nth-child(3) {
+                border-top: 1px solid #eee;
+                padding-top: 20px;
+            }
+        }
             }
             .footer-column {
                 flex-basis: 100%;
