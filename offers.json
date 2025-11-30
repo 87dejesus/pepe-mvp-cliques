@@ -12,8 +12,7 @@
     "offer_url": "https://zillow.com/exemplo-1",
     "photo_url": "/imagens/miami.jpg",
     "is_active": true
-  },  
-
+  },
   {
     "id": "2",
     "city": "Miami",
@@ -25,7 +24,7 @@
     "monthly_savings": 220.00,
     "discount_type": "First Month Free",
     "offer_url": "https://zillow.com/exemplo-2-sls",
-    "photo_url": "/imagens/sls.jpg",  <-- Cuidado com o nome do novo arquivo
+    "photo_url": "/imagens/sls.jpg",
     "is_active": true
   }
 ]
