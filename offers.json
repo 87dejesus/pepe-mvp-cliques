@@ -8,9 +8,23 @@
     "original_price": 1908.00,
     "discounted_price": 1908.00,
     "monthly_savings": 3816.00,
-    "discount_type": "2 Meses Grátis! ($3816.00 Total Savings)",
+    "discount_type": "2 Months Free! ($3816.00 Total Savings)",
     "offer_url": "https://www.apartments.com/the-atlantic-by-soleste-pompano-beach-fl/29wsy58/",
     "photo_url": "/imagens/atlantic.jpg",
+    "is_active": true
+  },
+  {
+    "id": "2",
+    "city": "Pompano Beach",
+    "building_name": "Old Town Square",
+    "location": "Pompano Beach, FL",
+    "rooms_bathrooms": "1 Bedroom / 1 Bathroom",
+    "original_price": 2150.00,
+    "discounted_price": 2150.00,
+    "monthly_savings": 2150.00,
+    "discount_type": "1 Month Free! ($2150.00 Total Savings)",
+    "offer_url": "https://www.apartments.com/old-town-square-pompano-beach-fl/eg61cpn/",
+    "photo_url": "/imagens/old-town-square.jpg",
     "is_active": true
   }
 ]
