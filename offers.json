@@ -12,7 +12,7 @@
     "offer_url": "https://zillow.com/exemplo-1",
     "photo_url": "/imagens/miami.jpg",
     "is_active": true
-  },  ,<-- ATENÇÃO: Adicione uma VÍRGULA aqui!
+  },  
 
   {
     "id": "2",
