@@ -222,5 +222,47 @@
     "offer_url": "https://www.apartments.com/legacy-at-palm-aire-pompano-beach-fl/gs2j8hy/", 
     "photo_url": "/imagens/legacy-palm-aire.jpg",
     "is_active": true
+  },
+  {
+    "id": "17",
+    "city": "Pompano Beach",
+    "building_name": "Avondale Gardens Apartments",
+    "location": "Pompano Beach, FL",
+    "rooms_bathrooms": "1 bd / 1 ba",
+    "monthly_rent_min": 1300.00,
+    "monthly_rent_max": 1475.00,
+    "monthly_savings": 1300.00,
+    "discount_type": "FIRST MONTH FREE! NO LAST REQUIRED.",
+    "offer_url": "https://www.apartments.com/avondale-gardens-apartments-pompano-beach-fl/tjgc93y/",
+    "photo_url": "/imagens/avondale-gardens.jpg",
+    "is_active": true
+  },
+  {
+    "id": "18",
+    "city": "Fort Lauderdale",
+    "building_name": "Berkshire Lauderdale By The Sea",
+    "location": "Fort Lauderdale, FL",
+    "rooms_bathrooms": "1 - 3 bd / 1 - 2 ba",
+    "monthly_rent_min": 2047.00,
+    "monthly_rent_max": 5648.00,
+    "monthly_savings": 1023.50,
+    "discount_type": "LIMITED TIME - ASK US HOW TO GET 2 WEEKS FREE ON SELECT APARTMENTS!",
+    "offer_url": "https://www.apartments.com/berkshire-lauderdale-by-the-sea-fort-lauderdale-fl/21ysn2c/",
+    "photo_url": "/imagens/berkshire-lauderdale.jpg",
+    "is_active": true
+  },
+  {
+    "id": "19",
+    "city": "Fort Lauderdale",
+    "building_name": "The Village at Eastpointe Apartments",
+    "location": "Fort Lauderdale, FL",
+    "rooms_bathrooms": "1 - 2 bd / 1 - 2 ba",
+    "monthly_rent_min": 1549.00,
+    "monthly_rent_max": 2199.00,
+    "monthly_savings": 1000.00,
+    "discount_type": "Move-in Special: Up to $1,000 Off (Valid units only)",
+    "offer_url": "https://www.apartments.com/the-village-at-eastpointe-apartments-fort-lauderdale-fl/4d90qth/",
+    "photo_url": "/imagens/village-eastpointe.jpg",
+    "is_active": true
   }
 ]
