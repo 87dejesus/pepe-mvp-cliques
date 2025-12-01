@@ -154,3 +154,74 @@
     "is_active": true
   }
 ]
+,
+  {
+    "id": "12",
+    "city": "Pompano Beach",
+    "building_name": "Breezes at Palm Aire",
+    "location": "Pompano Beach, FL",
+    "rooms_bathrooms": "1 - 2 bd / 1 - 2 ba",
+    "monthly_rent_min": 1650.00,
+    "monthly_rent_max": 2375.00,
+    "monthly_savings": 1650.00, 
+    "discount_type": "First Month's Rent FREE!",
+    "offer_url": "https://www.apartments.com/breezes-at-palm-aire-pompano-beach-fl/yltk7nrs/",
+    "photo_url": "/imagens/breezes-palm-aire.jpg",
+    "is_active": true
+  },
+  {
+    "id": "13",
+    "city": "Pompano Beach",
+    "building_name": "Pearl at Pompano Beach",
+    "location": "Pompano Beach, FL",
+    "rooms_bathrooms": "3 bd / 2.5 ba",
+    "monthly_rent_min": 2949.00,
+    "monthly_rent_max": 3400.00,
+    "monthly_savings": 6800.00, 
+    "discount_type": "Up to $6,800 in Free Rent!",
+    "offer_url": "https://www.apartments.com/pearl-at-pompano-beach-pompano-beach-fl/gs1lk9y/",
+    "photo_url": "/imagens/pearl-pompano-beach.jpg",
+    "is_active": true
+  },
+  {
+    "id": "14",
+    "city": "Pompano Beach",
+    "building_name": "Gateway Luxury Apartments",
+    "location": "Pompano Beach, FL",
+    "rooms_bathrooms": "1 - 2 bd / 1 - 2 ba",
+    "monthly_rent_min": 2009.00,
+    "monthly_rent_max": 4374.00,
+    "monthly_savings": 928.40, 
+    "discount_type": "2 Weeks Free Rent!",
+    "offer_url": "https://www.apartments.com/gateway-luxury-apartments-pompano-beach-fl/yyyht6w/",
+    "photo_url": "/imagens/gateway-luxury.jpg",
+    "is_active": true
+  },
+  {
+    "id": "15",
+    "city": "Pompano Beach",
+    "building_name": "Sonata Apartments",
+    "location": "Pompano Beach, FL",
+    "rooms_bathrooms": "1 - 3 bd / 1 - 2 ba",
+    "monthly_rent_min": 1750.00,
+    "monthly_rent_max": 2505.00,
+    "monthly_savings": 1750.00, 
+    "discount_type": "One Month Free",
+    "offer_url": "https://www.apartments.com/sonata-apartments-pompano-beach-fl/96rkvp5/",
+    "photo_url": "/imagens/sonata.jpg",
+    "is_active": true
+  },
+  {
+    "id": "16",
+    "city": "Pompano Beach",
+    "building_name": "Legacy at Palm Aire",
+    "location": "Pompano Beach, FL",
+    "rooms_bathrooms": "1 - 2 bd / 1 - 2 ba",
+    "monthly_rent_min": 1605.00,
+    "monthly_rent_max": 2290.00,
+    "monthly_savings": 500.00, 
+    "discount_type": "$500 OFF First Month's Rent",
+    "offer_url": "https://www.apartments.com/legacy-at-palm-aire-pompano-beach-fl/gza2j8hy/",
+    "photo_url": "/imagens/legacy-palm-aire.jpg",
+    "is_active": true
+  }
