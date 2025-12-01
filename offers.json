@@ -54,5 +54,47 @@
     "offer_url": "https://www.apartments.com/mayla-pompano-residences-pompano-beach-fl/45ljf1j/", 
     "photo_url": "/imagens/mayla.jpg",
     "is_active": true
+  },
+  {
+    "id": "5",
+    "city": "Pompano Beach",
+    "building_name": "Envy Pompano Beach",
+    "location": "Pompano Beach, FL",
+    "rooms_bathrooms": "Studio - 3 bd / 1 - 2 ba",
+    "monthly_rent_min": 1860.00,
+    "monthly_rent_max": 4592.00,
+    "monthly_savings": 3720.00, 
+    "discount_type": "Up to 2 Months Free!",
+    "offer_url": "https://www.apartments.com/envy-pompano-beach-pompano-beach-fl/1brjpxn/",
+    "photo_url": "/imagens/envy.jpg",
+    "is_active": true
+  },
+  {
+    "id": "6",
+    "city": "Coconut Creek",
+    "building_name": "Vista Verde at Coconut Creek",
+    "location": "Coconut Creek, FL",
+    "rooms_bathrooms": "1 - 3 bd / 1 - 2 ba",
+    "monthly_rent_min": 1850.00,
+    "monthly_rent_max": 2850.00,
+    "monthly_savings": 1850.00, 
+    "discount_type": "1 Month Free!",
+    "offer_url": "https://www.apartments.com/vista-verde-at-coconut-creek-coconut-creek-fl/7esxdnb/",
+    "photo_url": "/imagens/vista-verde.jpg",
+    "is_active": true
+  },
+  {
+    "id": "7",
+    "city": "Deerfield Beach",
+    "building_name": "The Club at Crystal Lake",
+    "location": "Deerfield Beach, FL",
+    "rooms_bathrooms": "1 - 3 bd / 1 - 2 ba",
+    "monthly_rent_min": 1939.00,
+    "monthly_rent_max": 2880.00,
+    "monthly_savings": 0.00, 
+    "discount_type": "7 Weeks Free Rent!",
+    "offer_url": "https://www.apartments.com/the-club-at-crystal-lake-deerfield-beach-fl/1bg79v7/",
+    "photo_url": "/imagens/crystal-lake.jpg",
+    "is_active": true
   }
 ]
