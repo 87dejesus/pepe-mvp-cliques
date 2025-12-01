@@ -121,7 +121,15 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Função principal para carregar os dados
+            const offersContainer = document.getElementById('offers-container');
+            
+            // VERIFICAÇÃO CRÍTICA: Se não for a página index (ou a página que contém a div), não executa o código que quebra as outras páginas.
+            if (!offersContainer) {
+                return; 
+            }
+
+            // O restante do código só roda se estivermos na página correta.
+            
             fetch('offers.json')
                 .then(response => {
                     if (!response.ok) {
@@ -132,17 +140,20 @@
                 .then(offersData => {
                     window.allOffers = offersData;
                     displayOffers(offersData);
-                    document.getElementById('city-search').addEventListener('keyup', filterOffers);
+                    const searchInput = document.getElementById('city-search');
+                    if (searchInput) {
+                        searchInput.addEventListener('keyup', filterOffers);
+                    }
                 })
                 .catch(error => {
                     console.error('Error loading offers:', error);
-                    // EXIBINDO O ERRO DE SINTAXE DO JSON
-                    const offersContainer = document.getElementById('offers-container');
+                    // Exibe o erro SOMENTE no offersContainer, que só existe no index.html.
                     offersContainer.innerHTML = '<p class="text-danger mt-5">Oops! Error loading offers. Please check the syntax of your offers.json file.</p>';
                 });
 
+            // ... (funções displayOffers e filterOffers permanecem as mesmas)
+
             function displayOffers(offers) {
-                const offersContainer = document.getElementById('offers-container');
                 offersContainer.innerHTML = '';
 
                 if (offers.length === 0) {
