@@ -96,5 +96,61 @@
     "offer_url": "https://www.apartments.com/the-club-at-crystal-lake-deerfield-beach-fl/1bg79v7/",
     "photo_url": "/imagens/crystal-lake.jpg",
     "is_active": true
+  },
+  {
+    "id": "8",
+    "city": "Pompano Beach",
+    "building_name": "Palm Court Apartments",
+    "location": "Pompano Beach, FL",
+    "rooms_bathrooms": "1 - 2 bd / 1 ba",
+    "monthly_rent_min": 1595.00,
+    "monthly_rent_max": 2195.00,
+    "monthly_savings": 50.00, 
+    "discount_type": "2025 Discount: $50-100 OFF RENT PRICE",
+    "offer_url": "https://www.apartments.com/palm-court-apartments-pompano-beach-fl/8p14800/", 
+    "photo_url": "/imagens/palm-court.jpg",
+    "is_active": true
+  },
+  {
+    "id": "9",
+    "city": "Coconut Creek",
+    "building_name": "Legacy at Coconut Creek",
+    "location": "Coconut Creek, FL",
+    "rooms_bathrooms": "1 - 2 bd / 1 - 2 ba",
+    "monthly_rent_min": 1750.00,
+    "monthly_rent_max": 2400.00,
+    "monthly_savings": 1750.00, 
+    "discount_type": "1 Month FREE!",
+    "offer_url": "https://www.apartments.com/legacy-at-coconut-creek-coconut-creek-fl/clqfm4/",
+    "photo_url": "/imagens/legacy-coconut-creek.jpg",
+    "is_active": true
+  },
+  {
+    "id": "10",
+    "city": "Deerfield Beach",
+    "building_name": "Lime Tree Associates LLC",
+    "location": "Deerfield Beach, FL",
+    "rooms_bathrooms": "1 - 2 bd / 1.5 - 2 ba",
+    "monthly_rent_min": 1615.00,
+    "monthly_rent_max": 2250.00,
+    "monthly_savings": 100.00, 
+    "discount_type": "$100.00 off on 12 months lease",
+    "offer_url": "https://www.apartments.com/lime-tree-associates-llc-deerfield-beach-fl/0v3rh52/",
+    "photo_url": "/imagens/lime-tree.jpg",
+    "is_active": true
+  },
+  {
+    "id": "11",
+    "city": "Fort Lauderdale",
+    "building_name": "10X Port Royale",
+    "location": "Fort Lauderdale, FL",
+    "rooms_bathrooms": "1 - 2 bd / 1 - 2 ba",
+    "monthly_rent_min": 1805.00,
+    "monthly_rent_max": 2736.00,
+    "monthly_savings": 1805.00, 
+    "discount_type": "1 Month Free On Select Apartments!",
+    "offer_url": "https://www.apartments.com/10x-port-royale-fort-lauderdale-fl/420m1bk/",
+    "photo_url": "/imagens/10x-port-royale.jpg",
+    "is_active": true
   }
 ]
