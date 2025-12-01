@@ -1,433 +1,179 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pepe - Real Discount Rental Offers</title>
-    
-    <script async src="https://www.googletletagmanager.com/gtag/js?id=G-8FRPX7DPW9"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-8FRPX7DPW9');
-    </script>
-    
+    <title>Pepe Deals - Real Discount Rental Offers</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* Estilos Globais e Reset */
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-            margin: 0; 
-            background-color: #f4f4f9; 
-            color: #333; 
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Container Principal */
-        .container { 
-            max-width: 1200px; 
-            margin: 30px auto; 
-            padding: 0 20px; 
-            flex-grow: 1;
-        }
-
-        /* Cabeçalho */
-        header { 
-            background-color: #007bff; 
-            color: white; 
-            padding: 25px; 
-            text-align: center; 
-        }
-
-        .header-content {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px; 
-            padding: 10px 20px;
-        }
-
-        .pepe-logo {
-            height: 80px; 
-            width: auto;
-            border-radius: 50%;
-            background-color: white; 
-            padding: 5px; 
-        }
-
-        header h1 { 
-            font-size: 2em; 
-            margin: 0; 
-        }
-
-        header p { 
-            font-size: 1.2em; 
-            margin: 5px 0 0; 
-            opacity: 0.9;
-        }
-
-        /* Barra de Busca */
-        .search-bar {
-            background-color: white; 
-            padding: 20px; 
-            border-radius: 8px; 
-            margin-bottom: 30px; 
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
-            display: flex; 
-            justify-content: center; 
-            text-align: center;
-        }
-
-        .search-bar input {
-            padding: 12px; 
-            border: 1px solid #ccc; 
-            border-radius: 4px; 
-            width: 80%; 
-            max-width: 500px; 
-            font-size: 1em;
-        }
-
-        /* Título das Ofertas */
-        h2 {
-            font-size: 1.5em;
-            color: #333;
+        .header-bg {
+            background-color: #007bff; /* Azul primário */
+            color: white;
+            padding: 20px 0;
             margin-bottom: 20px;
-            text-align: center;
         }
-        
-        /* --- LAYOUT DO GRID (CORRIGIDO) --- */
-        .offers-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 25px;
-            padding-bottom: 50px;
-            justify-items: center; 
-            max-width: 1200px; 
-            margin: 0 auto; 
-        }
-
-        .offer-card {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            overflow: hidden;
-            transition: transform 0.2s;
-            max-width: 400px; 
-            width: 100%; 
-        }
-
-        .offer-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-        }
-
-        .offer-card img {
-            width: 100%;
+        .offer-card .card-img-top {
             height: 200px;
             object-fit: cover;
         }
-
-        .card-content {
-            padding: 15px;
-        }
-
-        .building-name {
-            font-size: 1.3em;
-            color: #007bff;
-            margin-bottom: 5px;
-            font-weight: 600;
-        }
-
-        .location, .rooms-bathrooms {
-            font-size: 0.9em;
-            color: #777;
-            margin-bottom: 5px;
-        }
-
-        .price-section {
-            margin-top: 10px;
-            padding-top: 10px;
-            border-top: 1px dashed #eee;
-        }
-
-        /* Novo estilo para o range de preço */
-        .price-range {
-            font-size: 1.1em;
-            color: #333;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .discount-info {
-             font-size: 0.9em;
-             color: #999;
-             font-weight: 500;
-        }
-
-        .discount-label {
-            display: inline-block;
-            background-color: #ffc107;
-            color: #333;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-size: 0.85em;
-            font-weight: bold;
-            margin-top: 8px;
-        }
-        
-        .view-offer-btn {
-            display: block;
-            width: 100%;
-            padding: 12px;
-            background-color: #28a745;
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 4px;
-            margin-top: 15px;
-            font-weight: bold;
-            transition: background-color 0.2s;
-            cursor: pointer;
-        }
-
-        .view-offer-btn:hover {
-            background-color: #218838;
-        }
-        
-        /* --- Estilos do Rodapé (Tradução e Layout Corrigido) --- */
-        .footer {
+        .offer-card .card-body {
             display: flex;
-            justify-content: space-around;
-            padding: 30px 50px;
-            background-color: #f8f8f8;
-            border-top: 1px solid #eee;
-            margin-top: 50px;
-            width: 100%;
-            text-align: left; 
+            flex-direction: column;
         }
-
-        .footer-column {
-            flex-basis: 30%;
-            padding: 0 10px;
+        .alert-warning {
+            background-color: #ffc107;
+            border-color: #ffc107;
+            color: #343a40;
+            font-weight: bold;
         }
-
-        .footer-column h3 {
-            font-size: 16px;
-            color: #007bff;
-            margin-bottom: 15px;
+        footer a {
+            color: #6c757d; /* cinza */
         }
-
-        .footer-column a {
-            display: block;
-            color: #333;
-            text-decoration: none;
-            margin-bottom: 8px;
-            font-size: 14px;
-        }
-        
-        /* Novo estilo para "How We Help You Save Money" (ainda estático) */
-        .footer-column p {
-            display: block;
-            color: #333;
-            margin-bottom: 8px;
-            font-size: 14px;
-        }
-
-        .footer-column a:hover {
-            text-decoration: underline;
-        }
-
-        .footer-copyright {
-            margin-top: 20px;
-            font-size: 12px;
-            color: #777;
-        }
-
-        /* Media Query para Responsividade (CORREÇÃO DE LAYOUT) */
-        @media (max-width: 768px) {
-            .container { 
-                padding: 0 10px; 
-            }
-            .offers-grid {
-                grid-template-columns: 1fr; 
-                gap: 20px;
-            }
-            .offer-card {
-                width: 100%;
-                justify-self: stretch; 
-            }
-            
-            .footer {
-                flex-direction: column;
-                align-items: center; 
-                padding: 30px 20px;
-                text-align: center; 
-            }
-            .footer-column {
-                flex-basis: 100%;
-                margin-bottom: 25px;
-                padding: 0;
-            }
-            .footer-column h3 {
-                margin-top: 0;
-            }
-            /* Separadores nas colunas mobile */
-            .footer-column:nth-child(2), 
-            .footer-column:nth-child(3) {
-                border-top: 1px solid #eee;
-                padding-top: 20px;
-            }
+        footer a:hover {
+            color: #007bff; /* azul */
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="header-content">
-            <img src="/imagens/pepe ipad.jpg" alt="Pepe the Alligator Logo" class="pepe-logo"> 
-            <div>
-                <h1>Pepe - Real Discount Rental Offers</h1>
-                <p>Your source for the best apartment and rental deals in the US.</p>
+    <header class="header-bg text-center">
+        <div class="container">
+            <div class="d-flex flex-column align-items-center">
+                <img src="/imagens/pepe-icon.png" alt="Pepe" style="width: 80px; height: 80px; margin-bottom: 10px;">
+                <h1 class="display-6 fw-bold">Pepe - Real Discount Rental Offers</h1>
+                <p class="lead">Your source for the best apartment and rental deals in the US.</p>
             </div>
         </div>
     </header>
 
-    <div class="container">
-        <div class="search-bar">
-            <input type="text" placeholder="Search by City (Miami, Orlando, etc.)">
-        </div>
-        
-        <h2>🔥 Fresh Discount Offers!</h2>
-
-        <div class="offers-grid" id="offers-container">
+    <div class="container py-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <input type="text" id="city-search" class="form-control" placeholder="Search by City (Pompano Beach, Fort Lauderdale, etc.)">
             </div>
+        </div>
     </div>
 
-    <footer class="footer">
-        <div class="footer-column">
-            <h3>Pepe Deals</h3>
-            <a href="about-us.html">About Us</a>
-            <p class="footer-copyright">
-                © 2025 Pepe Deals. All rights reserved.
-            </p>
+    <section class="container my-5">
+        <div class="row">
+            <div class="col-12 text-center mb-4">
+                <h2 class="text-primary fw-bold">🔥 Fresh Discount Offers!</h2>
+            </div>
         </div>
-        <div class="footer-column">
-            <h3>Help & Safety</h3>
-            <p>How We Help You Save Money</p>
-            <a href="o-que-e-deal.html">What is a "Deal"?</a>
-            <a href="golpes-e-cuidados.html">Scams and Rental Cautions</a>
-        </div>
-        <div class="footer-column">
-            <h3>Legal</h3>
-            <a href="terms-of-use.html">Terms of Use</a>
-            <a href="privacy-policy.html">Privacy Policy</a>
+        
+        <div id="offers-container" class="row">
+            </div>
+    </section>
+
+    <footer class="text-center py-4 mt-5" style="background-color: #f8f9fa;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <h5 class="text-primary">Pepe Deals</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted" style="text-decoration: none;">About Us</a></li>
+                        <li><p class="text-muted mt-2 mb-0">© 2025 Pepe Deals. All rights reserved.</p></li>
+                    </ul>
+                </div>
+                
+                <div class="col-md-4 mb-3">
+                    <h5 class="text-primary">Help & Safety</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="o-que-e-deal.html" class="text-muted" style="text-decoration: none;">What is a "Deal"?</a></li>
+                        <li><a href="golpes-e-cuidados.html" class="text-muted" style="text-decoration: none;">Scams and Rental Cautions</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-md-4 mb-3">
+                    <h5 class="text-primary">Legal</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted" style="text-decoration: none;">Terms of Use</a></li>
+                        <li><a href="#" class="text-muted" style="text-decoration: none;">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </footer>
-
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-
-            // Função para calcular o total economizado, incluindo descontos por semanas
-            function calculateTotalSavings(minRent, discountType, monthlySavings) {
-                if (discountType.includes('Weeks Free')) {
-                    // Exemplo: "6 Weeks Free" ou "Up to 8 Weeks Free!"
-                    const weeksMatch = discountType.match(/(\d+)\s+Weeks Free/);
-                    let weeksFree = 0;
-                    
-                    if (weeksMatch) {
-                        weeksFree = parseInt(weeksMatch[1]);
-                    } else if (discountType.includes('8 Weeks Free')) {
-                        // Caso a regex falhe em "Up to 8 Weeks Free!"
-                         weeksFree = 8;
-                    } else if (discountType.includes('6 Weeks Free')) {
-                         weeksFree = 6;
-                    }
-                    
-                    if (weeksFree > 0) {
-                        // Mês tem aprox. 4.33 semanas. Desconto é (Semanas Grátis / 4.33) * Aluguel Mínimo
-                        const monthlyFactor = 4.333; // Usando 365/12 / 7 = 4.345, vamos simplificar para 4.333
-                        const savings = (weeksFree / monthlyFactor) * minRent;
-                        // Arredonda para o dólar mais próximo
-                        return Math.round(savings); 
-                    }
-                }
-                // Retorna o valor direto se não for desconto por semanas (meses grátis, % off, valor fixo)
-                return monthlySavings;
-            }
-
-
+            // Função principal para carregar os dados
             fetch('offers.json')
                 .then(response => {
                     if (!response.ok) {
-                        // Captura o erro para o log
-                        console.error('Failed to fetch offers.json', response.status, response.statusText);
-                        throw new Error('Network response was not ok');
+                        throw new Error('Network response was not ok ' + response.statusText);
                     }
                     return response.json();
                 })
-                .then(offers => {
-                    const container = document.getElementById('offers-container');
-                    container.innerHTML = ''; 
+                .then(offersData => {
+                    // Salva os dados de ofertas globais para que a função de filtro possa acessá-los
+                    window.allOffers = offersData;
                     
-                    // Garante que só as ofertas ativas sejam exibidas
-                    const activeOffers = offers.filter(offer => offer.is_active);
-
-                    if (activeOffers.length === 0) {
-                        container.innerHTML = '<p style="text-align: center; grid-column: 1 / -1;">No active offers found at the moment. Add offers to your offers.json.</p>';
-                        return;
-                    }
-
-                    activeOffers.forEach(offer => {
-                        const card = document.createElement('div');
-                        card.className = 'offer-card';
-
-                        // 1. Calcula a economia total
-                        const totalSavings = calculateTotalSavings(offer.monthly_rent_min, offer.discount_type, offer.monthly_savings);
-
-                        // 2. Formata o range de preço: $1,908 - $3,499
-                        // Remove o ".00" se for número inteiro
-                        const minPrice = offer.monthly_rent_min.toFixed(2).replace('.00', '');
-                        const maxPrice = offer.monthly_rent_max.toFixed(2).replace('.00', '');
-                        
-                        const priceRange = `$${minPrice} - $${maxPrice}`;
-                        
-                        // 3. Formata a informação de desconto (com vírgulas)
-                        const formattedSavings = totalSavings.toLocaleString('en-US', {minimumFractionDigits: 0, maximumFractionDigits: 0});
-                        const discountInfoText = `You can save up to $${formattedSavings} on your lease.`;
-
-
-                        const cardHtml = `
-                            <img src="${offer.photo_url}" alt="${offer.building_name} image">
-                            <div class="card-content">
-                                <p class="building-name">${offer.building_name}</p>
-                                <p class="location">${offer.location}</p>
-                                <p class="rooms-bathrooms">${offer.rooms_bathrooms}</p>
-                                
-                                <div class="price-section">
-                                    <p class="price-range">Monthly Rent: ${priceRange}</p>
-                                    <p class="discount-info">${discountInfoText}</p>
-                                    <span class="discount-label">${offer.discount_type}</span>
-                                </div>
-                                
-                                <a href="${offer.offer_url}" target="_blank" class="view-offer-btn" onclick="gtag('event', 'click', {'event_category': 'Offer', 'event_label': '${offer.building_name}', 'value': ${totalSavings}});">
-                                    VIEW OFFER (Tracked)
-                                </a>
-                            </div>
-                        `;
-                        card.innerHTML = cardHtml;
-                        container.appendChild(card);
-                    });
+                    // 1. Exibe todas as ofertas inicialmente
+                    displayOffers(offersData);
+                    
+                    // 2. Adiciona o ouvinte de evento para a busca (a função filterOffers será chamada a cada tecla digitada)
+                    document.getElementById('city-search').addEventListener('keyup', filterOffers);
                 })
                 .catch(error => {
-                    console.error('Error processing or loading offers:', error);
-                    // Exibe a mensagem de erro que você estava vendo, para que o usuário saiba que há um problema
-                    document.getElementById('offers-container').innerHTML = '<p style="text-align: center; color: red; grid-column: 1 / -1;">Oops! Error loading offers. Please check the syntax of your offers.json file.</p>';
+                    console.error('Error loading offers:', error);
+                    // Exibe mensagem de erro se o JSON falhar
+                    const offersContainer = document.getElementById('offers-container');
+                    offersContainer.innerHTML = '<p class="text-danger mt-5">Oops! Error loading offers. Please check the syntax of your offers.json file.</p>';
                 });
+
+            function displayOffers(offers) {
+                const offersContainer = document.getElementById('offers-container');
+                offersContainer.innerHTML = ''; // Limpa o conteúdo existente
+
+                if (offers.length === 0) {
+                    offersContainer.innerHTML = '<p class="text-center mt-5">Nenhuma oferta encontrada para sua pesquisa. Tente buscar por uma cidade diferente.</p>';
+                    return;
+                }
+
+                offers.forEach(offer => {
+                    // toFixed(2) garante duas casas decimais para valores monetários
+                    const card = `
+                        <div class="col-lg-4 col-md-6 mb-4 offer-card">
+                            <div class="card h-100 shadow-sm border-0">
+                                <img src="${offer.photo_url}" class="card-img-top" alt="${offer.building_name}">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title text-primary">${offer.building_name}</h5>
+                                    <p class="card-text text-muted small">${offer.location} | ${offer.rooms_bathrooms}</p>
+                                    
+                                    <div class="mt-auto pt-2">
+                                        <p class="mb-1">Monthly Rent: <strong>$${offer.monthly_rent_min.toFixed(2)} - $${offer.monthly_rent_max.toFixed(2)}</strong></p>
+                                        <p class="mb-1 text-success">You can save up to **$${offer.monthly_savings.toFixed(2)}** on your lease.</p>
+                                        <div class="alert alert-warning py-1 px-2 text-center small mt-2" role="alert">
+                                            ${offer.discount_type}
+                                        </div>
+                                        <a href="${offer.offer_url}" target="_blank" class="btn btn-success btn-block mt-2">VIEW OFFER (Tracked)</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    offersContainer.innerHTML += card;
+                });
+            }
+
+            // Função que executa a filtragem
+            function filterOffers() {
+                const searchTerm = document.getElementById('city-search').value.toLowerCase();
+                
+                const filteredOffers = window.allOffers.filter(offer => {
+                    const city = offer.city.toLowerCase();
+                    const buildingName = offer.building_name.toLowerCase();
+                    
+                    // Filtra por cidade OU nome do edifício
+                    return city.includes(searchTerm) || buildingName.includes(searchTerm);
+                });
+
+                displayOffers(filteredOffers);
+            }
         });
     </script>
-
 </body>
 </html>
