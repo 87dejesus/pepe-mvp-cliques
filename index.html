@@ -40,7 +40,7 @@
         <div class="container">
             <div class="d-flex flex-column align-items-center">
                 <img src="/imagens/pepe ipad.png" alt="Pepe" style="width: 80px; height: 80px; margin-bottom: 10px;">
-<h1 class="display-6 fw-bold">Pepe - Real Discount Rental Offers</h1>
+                <h1 class="display-6 fw-bold">Pepe - Real Discount Rental Offers</h1>
                 <p class="lead">Your source for the best apartment and rental deals in the US.</p>
             </div>
         </div>
@@ -129,12 +129,11 @@
                 offersContainer.innerHTML = ''; // Limpa o conteúdo existente
 
                 if (offers.length === 0) {
-                    offersContainer.innerHTML = '<p class="text-center mt-5">Nenhuma oferta encontrada para sua pesquisa. Tente buscar por uma cidade diferente.</p>';
+                    offersContainer.innerHTML = '<p class="text-center mt-5">Nenhuma oferta encontrada para sua pesquisa. Tente buscar por uma cidade ou nome de edifício diferente.</p>';
                     return;
                 }
 
                 offers.forEach(offer => {
-                    // toFixed(2) garante duas casas decimais para valores monetários
                     const card = `
                         <div class="col-lg-4 col-md-6 mb-4 offer-card">
                             <div class="card h-100 shadow-sm border-0">
