@@ -13,7 +13,7 @@
             margin-bottom: 20px;
         }
         
-        /* CSS CORRIGIDO PARA A IMAGEM DO PEPE (circular) */
+        /* CSS para a imagem do Pepe: circular */
         .pepe-icon-container {
             width: 80px; 
             height: 80px;
@@ -84,7 +84,7 @@
         </div>
         
         <div id="offers-container" class="row">
-            </div>
+        </div>
     </section>
 
     <footer class="text-center py-4 mt-5" style="background-color: #f8f9fa;">
@@ -123,7 +123,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             const offersContainer = document.getElementById('offers-container');
             
-            // VERIFICAÇÃO CRÍTICA: Se não for a página index (ou a página que contém a div), não executa o código que quebra as outras páginas.
+            // VERIFICAÇÃO DE SEGURANÇA: Se o contêiner de ofertas não existe, não executa a busca pelo JSON.
             if (!offersContainer) {
                 return; 
             }
@@ -147,11 +147,9 @@
                 })
                 .catch(error => {
                     console.error('Error loading offers:', error);
-                    // Exibe o erro SOMENTE no offersContainer, que só existe no index.html.
+                    // Exibe a mensagem de erro (e não quebra outras páginas)
                     offersContainer.innerHTML = '<p class="text-danger mt-5">Oops! Error loading offers. Please check the syntax of your offers.json file.</p>';
                 });
-
-            // ... (funções displayOffers e filterOffers permanecem as mesmas)
 
             function displayOffers(offers) {
                 offersContainer.innerHTML = '';
