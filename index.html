@@ -12,6 +12,21 @@
             padding: 20px 0;
             margin-bottom: 20px;
         }
+        /* CSS NOVO PARA ARREDONDAR A IMAGEM */
+        .pepe-icon-container {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 10px;
+            /* Se a imagem for transparente, o background-color não é necessário */
+        }
+        .pepe-icon-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Garante que a imagem cabe sem cortar */
+            border-radius: 50%; /* Tenta forçar a imagem a ser circular */
+            background-color: white; /* Cor de fundo para o círculo, caso o PNG não seja transparente */
+        }
+
         .offer-card .card-img-top {
             height: 200px;
             object-fit: cover;
@@ -39,7 +54,9 @@
     <header class="header-bg text-center">
         <div class="container">
             <div class="d-flex flex-column align-items-center">
-                <img src="/imagens/pepe ipad.png" alt="Pepe" style="width: 80px; height: 80px; margin-bottom: 10px;">
+                <div class="pepe-icon-container">
+                    <img src="/imagens/pepe ipad.png" alt="Pepe">
+                </div>
                 <h1 class="display-6 fw-bold">Pepe - Real Discount Rental Offers</h1>
                 <p class="lead">Pepe, the Rent Deals Hunter.</p>
             </div>
