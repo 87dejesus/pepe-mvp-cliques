@@ -2,8 +2,10 @@ let allOffers = []; // Variável global para armazenar todas as ofertas
 
 // A função principal que carrega os dados
 function loadOffers() {
+    // 1. Busca os dados do arquivo offers.json
     fetch('offers.json')
         .then(response => {
+            // Verifica se a resposta HTTP foi bem-sucedida (status 200)
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -15,7 +17,9 @@ function loadOffers() {
             setupSearchListener(); // Configura o filtro após o carregamento
         })
         .catch(error => {
-            console.error('Failed to load or parse offers:', error);
+            // 3. Em caso de erro, exibe uma mensagem no console e na tela.
+            console.error('Failed to load or parse offers. The file may be missing or have a syntax error:', error);
+
             const offersContainer = document.getElementById('offersContainer');
             if (offersContainer) {
                 offersContainer.innerHTML = `
@@ -44,20 +48,21 @@ function filterOffers(searchTerm) {
     const filteredOffers = allOffers.filter(offer => 
         // Filtra por cidade (case-insensitive)
         offer.city.toLowerCase().includes(searchTerm) ||
-        // Opcional: Filtra também por nome do prédio
+        // Filtra também por nome do prédio (opcional, mas útil)
         offer.building_name.toLowerCase().includes(searchTerm)
     );
     renderOffers(filteredOffers);
 }
 
 
-// Função para renderizar as ofertas no HTML (inalterada)
+// Função para renderizar as ofertas no HTML
 function renderOffers(offers) {
     const offersContainer = document.getElementById('offersContainer');
     if (!offersContainer) return;
 
     offersContainer.innerHTML = ''; 
 
+    // Função para formatar o valor como moeda USD
     const formatCurrency = (value) => {
         return value.toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2 });
     };
