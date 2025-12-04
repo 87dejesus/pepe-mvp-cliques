@@ -420,17 +420,17 @@
     "is_active": true
   },
   {
-    "id": "31",
-    "city": "Chicago",
-    "building_name": "Upshore Residences",
-    "location": "4555 N Sheridan Rd, Chicago, IL 60640",
-    "rooms_bathrooms": "Studio - 2 bd / 1 - 2 ba",
-    "monthly_rent_min": 1929.00,
-    "monthly_rent_max": 2707.00,
-    "monthly_savings": 1000.00,
-    "discount_type": "Special Offer: Two-Bedrooms starting at $2,695 Call the leasing office to earn a $1,000 move-in credit for 2-bedroom leases starting on or before 12/15/15 *Limited time offer, restrictions apply",
-    "offer_url": "https://apartments.com/upshore-residences-chicago-il/r6n0yt1/",
-    "photo_url": "/imagens/upshore-residences.jpg",
-    "is_active": true
-  }
+  "id": "31",
+  "city": "Chicago",
+  "building_name": "Upshore Residences",
+  "location": "4555 N Sheridan Rd, Chicago, IL 60640",
+  "rooms_bathrooms": "Studio - 2 bd / 1 - 2 ba",
+  "monthly_rent_min": 1929.00,
+  "monthly_rent_max": 2707.00,
+  "monthly_savings": 1000.00,
+  "discount_type": "Special Offer: Two-Bedrooms starting at $2,695 Call the leasing office to earn a $1,000 move-in credit for 2-bedroom leases starting on or before 12/15/15 *Limited time offer, restrictions apply",
+  "offer_url": "https://www.apartments.com/upshore-residences-chicago-il/r8h0yt1/",
+  "photo_url": "/imagens/upshore-residences.jpg",
+  "is_active": true
+}
 ]
