@@ -390,5 +390,47 @@
     "offer_url": "https://www.morgan-properties.com/apartments/il/chicago/noca-blu/",
     "photo_url": "/imagens/noca-blu.jpg",
     "is_active": true
+  },
+  {
+    "id": "29",
+    "city": "Chicago",
+    "building_name": "Logan",
+    "location": "2522 N Milwaukee Ave, Chicago, IL 60647",
+    "rooms_bathrooms": "1 - 2 bd / 1 - 2 ba",
+    "monthly_rent_min": 2627.00,
+    "monthly_rent_max": 6368.00,
+    "monthly_savings": 3940.50,
+    "discount_type": "Black Friday Blitz: Get 6 WEEKS FREE on ANY apartment if you move in by 12/31! Book a tour before this deal is gone! *T&C Apply",
+    "offer_url": "https://www.apartments.com/logan-chicago-il/q0yn6mw/",
+    "photo_url": "/imagens/logan.jpg",
+    "is_active": true
+  },
+  {
+    "id": "30",
+    "city": "Chicago",
+    "building_name": "Milieu",
+    "location": "205 S Peoria, Chicago, IL 60607",
+    "rooms_bathrooms": "Studio - 2 bd / 1 - 2 ba",
+    "monthly_rent_min": 2306.00,
+    "monthly_rent_max": 6864.00,
+    "monthly_savings": 1500.00,
+    "discount_type": "Limited Time Special: $1,500 off select apartments call the leasing office to learn more!",
+    "offer_url": "https://apartments.com/milieu-chicago-il/ck37f1d/",
+    "photo_url": "/imagens/milieu.jpg",
+    "is_active": true
+  },
+  {
+    "id": "31",
+    "city": "Chicago",
+    "building_name": "Upshore Residences",
+    "location": "4555 N Sheridan Rd, Chicago, IL 60640",
+    "rooms_bathrooms": "Studio - 2 bd / 1 - 2 ba",
+    "monthly_rent_min": 1929.00,
+    "monthly_rent_max": 2707.00,
+    "monthly_savings": 1000.00,
+    "discount_type": "Special Offer: Two-Bedrooms starting at $2,695 Call the leasing office to earn a $1,000 move-in credit for 2-bedroom leases starting on or before 12/15/15 *Limited time offer, restrictions apply",
+    "offer_url": "https://apartments.com/upshore-residences-chicago-il/r6n0yt1/",
+    "photo_url": "/imagens/upshore-residences.jpg",
+    "is_active": true
   }
 ]
