@@ -264,5 +264,62 @@
     "offer_url": "https://www.apartments.com/the-village-at-eastpointe-apartments-fort-lauderdale-fl/4d90qth/",
     "photo_url": "/imagens/village-eastpointe.jpg",
     "is_active": true
+  },
+],
+  {
+    "id": "20",
+    "city": "Chicago",
+    "building_name": "The 808 Cleveland",
+    "location": "Chicago, IL",
+    "rooms_bathrooms": "Studio - 4 bd / 1 - 3 ba",
+    "monthly_rent_min": 1299.00,
+    "monthly_rent_max": 6700.00,
+    "monthly_savings": 1299.00, 
+    "discount_type": "December Savings - 1 MONTH FREE",
+    "offer_url": "https://www.apartments.com/the-808-cleveland-chicago-il/zjt55rw/",
+    "photo_url": "/imagens/the-808-cleveland.jpg",
+    "is_active": true
+  },
+  {
+    "id": "21",
+    "city": "Chicago",
+    "building_name": "The Residences at NewCity",
+    "location": "Chicago, IL",
+    "rooms_bathrooms": "Studio - 2 bd / 1 - 2 ba",
+    "monthly_rent_min": 2421.00,
+    "monthly_rent_max": 4740.00,
+    "monthly_savings": 2421.00, 
+    "discount_type": "Up to ONE month FREE!",
+    "offer_url": "https://www.apartments.com/the-residences-at-newcity-chicago-il/a01145/",
+    "photo_url": "/imagens/residences-newcity.jpg",
+    "is_active": true
+  },
+  {
+    "id": "22",
+    "city": "Chicago",
+    "building_name": "Sentral Michigan Avenue",
+    "location": "Chicago, IL",
+    "rooms_bathrooms": "Studio - 2 bd / 1 - 2 ba",
+    "monthly_rent_min": 2475.00,
+    "monthly_rent_max": 10000.00,
+    "monthly_savings": 2475.00, 
+    "discount_type": "Up to 1 Month Free! Move in by 12/21.",
+    "offer_url": "https://www.apartments.com/sentral-michigan-avenue-chicago-il/9fbfa3/",
+    "photo_url": "/imagens/sentral-michigan.jpg",
+    "is_active": true
+  },
+  {
+    "id": "23",
+    "city": "Chicago",
+    "building_name": "Presidential Towers",
+    "location": "Chicago, IL",
+    "rooms_bathrooms": "Studio - 2 bd / 1 - 2 ba",
+    "monthly_rent_min": 1550.00,
+    "monthly_rent_max": 9365.00,
+    "monthly_savings": 450.00, 
+    "discount_type": "Waived admin fee of $450",
+    "offer_url": "https://www.apartments.com/presidential-towers-chicago-il/a011a2/",
+    "photo_url": "/imagens/presidential-towers.jpg",
+    "is_active": true
   }
 ]
