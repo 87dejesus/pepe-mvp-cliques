@@ -3,123 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pepe Deals - Real Discount Rental Offers</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Pepe - Real Discount Rental Offers</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        .header-bg {
-            background-color: #007bff; /* Azul primário */
+        /* Estilos básicos para corresponder aos seus prints */
+        body {
+            background-color: #f8f9fa; /* Light gray background */
+        }
+        .header-section {
+            background-color: #007bff; /* Blue background for header */
             color: white;
-            padding: 20px 0;
-            margin-bottom: 20px;
+            padding: 40px 0;
+            text-align: center;
         }
-        
-        /* CSS para a imagem do Pepe: circular */
-        .pepe-icon-container {
-            width: 80px; 
-            height: 80px;
-            margin-bottom: 10px;
-            border-radius: 50%; 
-            overflow: hidden; 
-            background-color: white; 
-            display: flex; 
-            justify-content: center;
-            align-items: center;
+        .search-container {
+            padding: 30px 0;
+            background-color: white;
         }
-        .pepe-icon-container img {
-            max-width: 100%; 
-            max-height: 100%;
-            object-fit: cover; 
-            border-radius: 50%; /* Faz a imagem ser circular */
+        .card {
+            transition: transform 0.2s, box-shadow 0.2s;
         }
-
-        .offer-card .card-img-top {
-            height: 200px;
-            object-fit: cover;
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
-        .offer-card .card-body {
-            display: flex;
-            flex-direction: column;
+        .footer-section {
+            background-color: #f1f1f1;
+            padding: 30px 0;
+            text-align: center;
         }
-        .alert-warning {
-            background-color: #ffc107;
-            border-color: #ffc107;
-            color: #343a40;
+        .rooms-bath, .price-range {
             font-weight: bold;
-        }
-        footer a {
-            color: #6c757d;
-        }
-        footer a:hover {
-            color: #007bff;
         }
     </style>
 </head>
 <body>
 
-    <header class="header-bg text-center">
+    <header class="header-section">
         <div class="container">
             <div class="d-flex flex-column align-items-center">
-                <div class="pepe-icon-container">
-                    <img src="/imagens/pepe-ipad.png" alt="Pepe" class="img-fluid rounded-circle" style="max-width: 150px;">
-                </div>
-                
-                <h1 class="display-6 fw-bold">Real Discount Rental Offer</h1>
-                <p class="lead">Pepe The rent deal hunter</p>
+                <img src="/imagens/pepe-ipad.jpg" alt="Pepe" class="img-fluid rounded-circle mb-3" style="max-width: 150px; background-color: white; padding: 5px;">
+                <h1 class="display-6 fw-bold">Pepe - Real Discount Rental Offers</h1>
+                <p class="lead">Your source for the best apartment and rental deals in the US.</p>
             </div>
         </div>
     </header>
 
-    <div class="container py-4">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <input type="text" id="city-search" class="form-control" placeholder="Search by City (Pompano Beach, Fort Lauderdale, etc.)">
+    <section class="search-container">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center">
+                    <input type="text" class="form-control form-control-lg" id="citySearch" placeholder="Search by City (Pompano Beach, Fort Lauderdale, etc.)">
+                </div>
             </div>
-        </div>
-    </div>
-
-    <section class="container my-5">
-        <div class="row">
-            <div class="col-12 text-center mb-4">
-                <h2 class="text-primary fw-bold">🔥 Fresh Discount Offers!</h2>
+            <div class="text-center mt-4">
+                <span style="font-size: 2em;">🔥</span> <h4 class="d-inline-block fw-bold">Fresh Discount Offers!</h4>
             </div>
-        </div>
-        
-        <div id="offers-container" class="row">
         </div>
     </section>
 
-    <footer class="text-center py-4 mt-5" style="background-color: #f8f9fa;">
+    <section class="container my-5">
+        <div class="row" id="offersContainer">
+            <div class="col-12 text-center">
+                <p class="text-muted">Loading offers...</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-section">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 mb-3">
-                    <h5 class="text-primary">Pepe Deals</h5>
+                <div class="col-md-4">
+                    <h5>Pepe Deals</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-muted" style="text-decoration: none;">About Us</a></li>
-                        <li><p class="text-muted mt-2 mb-0">© 2025 Pepe Deals. All rights reserved.</p></li>
+                        <li><a href="#" class="text-decoration-none text-primary">About Us</a></li>
                     </ul>
                 </div>
-                
-                <div class="col-md-4 mb-3">
-                    <h5 class="text-primary">Help & Safety</h5>
+                <div class="col-md-4">
+                    <h5>Help & Safety</h5>
                     <ul class="list-unstyled">
-                        <li><a href="o-que-e-deal.html" class="text-muted" style="text-decoration: none;">What is a "Deal"?</a></li>
-                        <li><a href="golpes-e-cuidados.html" class="text-muted" style="text-decoration: none;">Scams and Rental Cautions</a></li>
+                        <li><a href="#" class="text-decoration-none text-primary">What is a "Deal"?</a></li>
+                        <li><a href="#" class="text-decoration-none text-primary">Scams and Rental Cautions</a></li>
                     </ul>
                 </div>
-                
-                <div class="col-md-4 mb-3">
-                    <h5 class="text-primary">Legal</h5>
+                <div class="col-md-4">
+                    <h5>Legal</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-muted" style="text-decoration: none;">Terms of Use</a></li>
-                        <li><a href="#" class="text-muted" style="text-decoration: none;">Privacy Policy</a></li>
+                        <li><a href="#" class="text-decoration-none text-primary">Terms of Use</a></li>
+                        <li><a href="#" class="text-decoration-none text-primary">Privacy Policy</a></li>
                     </ul>
                 </div>
             </div>
+            <hr>
+            <p class="text-muted mb-0">© 2025 Pepe Deals. All rights reserved.</p>
         </div>
     </footer>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script src="main.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script src="main.js"></script>
 </body>
 </html>
