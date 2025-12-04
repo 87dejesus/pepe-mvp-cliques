@@ -1,25 +1,23 @@
-// A função principal que carrega os dados e renderiza as ofertas.
+let allOffers = []; // Variável global para armazenar todas as ofertas
+
+// A função principal que carrega os dados
 function loadOffers() {
-    // 1. Busca os dados do arquivo offers.json
     fetch('offers.json')
         .then(response => {
-            // Verifica se a resposta HTTP foi bem-sucedida (status 200)
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             return response.json();
         })
         .then(offersData => {
-            // 2. Chama a função para exibir as ofertas carregadas
-            renderOffers(offersData);
+            allOffers = offersData; // Armazena os dados globalmente
+            renderOffers(allOffers); // Renderiza todas as ofertas inicialmente
+            setupSearchListener(); // Configura o filtro após o carregamento
         })
         .catch(error => {
-            // 3. Em caso de erro, exibe uma mensagem no console e na tela.
-            console.error('Failed to load or parse offers. The file may be missing or have a syntax error:', error);
-
+            console.error('Failed to load or parse offers:', error);
             const offersContainer = document.getElementById('offersContainer');
             if (offersContainer) {
-                // Mensagem de erro neutra, removendo a frase 'Please check the syntax...'
                 offersContainer.innerHTML = `
                     <div class="col-12 text-center my-5">
                         <p class="text-danger font-weight-bold">Ocorreu um erro ao carregar as ofertas. Por favor, verifique o arquivo 'offers.json'.</p>
@@ -29,14 +27,37 @@ function loadOffers() {
         });
 }
 
-// Função para renderizar as ofertas no HTML
+// NOVO: Função para configurar o Listener de Busca
+function setupSearchListener() {
+    const searchInput = document.getElementById('citySearch');
+    if (searchInput) {
+        // Escuta o evento 'input' (dispara a cada tecla digitada)
+        searchInput.addEventListener('input', (event) => {
+            const searchTerm = event.target.value.toLowerCase().trim();
+            filterOffers(searchTerm);
+        });
+    }
+}
+
+// NOVO: Função para filtrar as ofertas
+function filterOffers(searchTerm) {
+    const filteredOffers = allOffers.filter(offer => 
+        // Filtra por cidade (case-insensitive)
+        offer.city.toLowerCase().includes(searchTerm) ||
+        // Opcional: Filtra também por nome do prédio
+        offer.building_name.toLowerCase().includes(searchTerm)
+    );
+    renderOffers(filteredOffers);
+}
+
+
+// Função para renderizar as ofertas no HTML (inalterada)
 function renderOffers(offers) {
     const offersContainer = document.getElementById('offersContainer');
     if (!offersContainer) return;
 
     offersContainer.innerHTML = ''; 
 
-    // Função para formatar o valor como moeda USD
     const formatCurrency = (value) => {
         return value.toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2 });
     };
@@ -71,10 +92,10 @@ function renderOffers(offers) {
     });
     
     if (activeOffers.length === 0) {
-         offersContainer.innerHTML = '<div class="col-12"><p class="text-center text-muted">No active offers found.</p></div>';
+         offersContainer.innerHTML = '<div class="col-12"><p class="text-center text-muted">No active offers found for this search.</p></div>';
     }
 }
 
 
-// ** GARANTIA DE CARREGAMENTO: Inicia a função loadOffers somente após o HTML estar pronto. **
+// GARANTIA DE CARREGAMENTO: Inicia a função loadOffers somente após o HTML estar pronto.
 document.addEventListener('DOMContentLoaded', loadOffers);
