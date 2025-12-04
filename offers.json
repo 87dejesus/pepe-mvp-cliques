@@ -299,7 +299,7 @@
     "building_name": "Sentral Michigan Avenue",
     "location": "Chicago, IL",
     "rooms_bathrooms": "Studio - 2 bd / 1 - 2 ba",
-    "monthly_rent_min": 2475.0.0,
+    "monthly_rent_min": 2475.00,
     "monthly_rent_max": 10000.00,
     "monthly_savings": 2475.00,
     "discount_type": "Up to 1 Month Free! Move in by 12/21.",
