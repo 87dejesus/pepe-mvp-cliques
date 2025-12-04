@@ -5,10 +5,8 @@ function loadOffers() {
         .then(response => {
             // Verifica se a resposta HTTP foi bem-sucedida (status 200)
             if (!response.ok) {
-                // Se a resposta falhar, lança um erro para ser pego pelo .catch()
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-            // Converte a resposta para JSON
             return response.json();
         })
         .then(offersData => {
@@ -16,19 +14,15 @@ function loadOffers() {
             renderOffers(offersData);
         })
         .catch(error => {
-            // 3. Em caso de erro (falha na rede, JSON inválido, etc.), exibe a mensagem de erro
-            console.error('Failed to load or parse offers:', error);
+            // 3. Em caso de erro, exibe uma mensagem no console e na tela.
+            console.error('Failed to load or parse offers. The file may be missing or have a syntax error:', error);
 
-            // Obtém o container para mostrar a mensagem de erro ao usuário
             const offersContainer = document.getElementById('offersContainer');
             if (offersContainer) {
-                // **CORREÇÃO:** Removendo a mensagem de erro conforme solicitado
-                // Agora, em caso de falha, o container será limpo ou uma mensagem mais neutra será exibida (você pode customizar isso depois).
-                // Por enquanto, vou apenas limpar o container para esconder o erro, mas o ideal é que ele carregue.
-                // Se o problema for resolvido, esta seção do código nunca será alcançada.
+                // Mensagem de erro neutra, removendo a frase 'Please check the syntax...'
                 offersContainer.innerHTML = `
-                    <div style="text-align: center; margin-top: 50px;">
-                        <p style="color: #555;">Ocorreu um erro ao carregar as ofertas. Verifique o console do navegador para detalhes técnicos.</p>
+                    <div class="col-12 text-center my-5">
+                        <p class="text-danger font-weight-bold">Ocorreu um erro ao carregar as ofertas. Por favor, verifique o arquivo 'offers.json'.</p>
                     </div>
                 `;
             }
@@ -40,14 +34,13 @@ function renderOffers(offers) {
     const offersContainer = document.getElementById('offersContainer');
     if (!offersContainer) return;
 
-    offersContainer.innerHTML = ''; // Limpa o conteúdo anterior
+    offersContainer.innerHTML = ''; 
 
     // Função para formatar o valor como moeda USD
     const formatCurrency = (value) => {
         return value.toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2 });
     };
 
-    // Filtra as ofertas para garantir que apenas as ativas sejam exibidas
     const activeOffers = offers.filter(offer => offer.is_active);
 
     activeOffers.forEach(offer => {
@@ -77,14 +70,11 @@ function renderOffers(offers) {
         offersContainer.appendChild(card);
     });
     
-    // Se não houver ofertas, exibe uma mensagem
     if (activeOffers.length === 0) {
          offersContainer.innerHTML = '<div class="col-12"><p class="text-center text-muted">No active offers found.</p></div>';
     }
 }
 
 
-// ** CORREÇÃO MAIS IMPORTANTE: Usa o evento DOMContentLoaded **
-// Isso garante que o HTML (incluindo o offersContainer e o resto da página)
-// foi totalmente carregado antes de chamar a função loadOffers().
+// ** GARANTIA DE CARREGAMENTO: Inicia a função loadOffers somente após o HTML estar pronto. **
 document.addEventListener('DOMContentLoaded', loadOffers);
