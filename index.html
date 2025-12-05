@@ -34,18 +34,29 @@
         
         /* Contêiner principal da rolagem */
         .listing-carousel {
-            overflow-x: auto; 
-            white-space: nowrap;
-            padding-bottom: 15px; 
-            padding-left: 20px; 
-            padding-right: 20px;
-            -webkit-overflow-scrolling: touch; 
-            -ms-overflow-style: none; /* Esconde a barra de rolagem IE/Edge */
-            scrollbar-width: none; /* Esconde a barra de rolagem Firefox */
-        }
-        /* Esconde a barra de rolagem Chrome/Safari */
-        .listing-carousel::-webkit-scrollbar {
-            display: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    padding-bottom: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* OPCIONAL: se quiser a barra mais fininha e discreta */
+.listing-carousel::-webkit-scrollbar {
+    height: 8px;
+}
+
+.listing-carousel::-webkit-scrollbar-track {
+    background: #e9ecef;
+}
+
+.listing-carousel::-webkit-scrollbar-thumb {
+    background: #adb5bd;
+    border-radius: 4px;
+}
+
         }
 
         /* Contêiner interno que força o display horizontal */
