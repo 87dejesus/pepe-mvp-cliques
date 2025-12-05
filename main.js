@@ -4,18 +4,20 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             // 1. Fetch dos dados do offers.json
             const response = await fetch('offers.json');
-            const offers = await response.json();
+            const allOffers = await response.json();
             
-            // 2. Elemento onde as ofertas principais serão injetadas:
+            // 2. FILTRAGEM OBRIGATÓRIA: Usar apenas ofertas com "is_active": true
+            const activeOffers = allOffers.filter(offer => offer.is_active === true);
+            
+            // 3. Elemento onde as ofertas principais serão injetadas:
             const offersContainer = document.getElementById('offersContainer');
 
-            // 3. Função para renderizar um card de oferta
+            // 4. Função para renderizar um card de oferta
             const renderOfferCard = (offer) => {
                 // Remove o 'bd / ba' para que o texto fique mais limpo no card
                 const roomsBathrooms = offer.rooms_bathrooms.replace(/bd \/|ba/g, '').trim();
                 
-                // Cria o HTML do card usando a classe 'listing-card'
-                // E garante que o link abra em uma nova aba (target="_blank")
+                // Cria o HTML do card usando a classe 'listing-card' e target="_blank"
                 return `
                     <div class="listing-card">
                         <div class="listing-photo" style="background-image: url('${offer.photo_url}');">
@@ -39,14 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
             };
 
-            // 4. Filtrar e ordenar as ofertas para a listagem principal (Excluindo as 4 já no Weekly Update)
-            
-            // IDs das 4 ofertas que estão fixas no Weekly Update (para evitar duplicação)
-            // (Baseado nos maiores descontos: Pearl, Logan, Atlantic, Old Town Square)
-            const weeklyUpdateIds = ["13", "29", "1", "2"]; 
-            
-            // Filtra ofertas que NÃO estão no Weekly Update
-            let mainOffers = offers.filter(offer => !weeklyUpdateIds.includes(offer.id));
+            // 5. Carregar TODAS as ofertas ATIVAS para a listagem principal
+            let mainOffers = activeOffers;
             
             // Ordena as ofertas por city (para agrupar), depois por rent_min
             mainOffers.sort((a, b) => {
@@ -56,10 +52,10 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
 
-            // 5. Gera o HTML de todos os cards da listagem principal
+            // 6. Gera o HTML de todos os cards da listagem principal
             const offersHtml = mainOffers.map(renderOfferCard).join('');
             
-            // 6. Injeta o HTML no container
+            // 7. Injeta o HTML no container
             offersContainer.innerHTML = offersHtml;
 
         } catch (error) {
@@ -69,22 +65,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
     
-    // 7. Lógica de Busca (Atualizada para Carrossel)
+    // 8. Lógica de Busca (Corrigida para usar apenas ofertas ativas)
     document.getElementById('citySearch').addEventListener('input', async (e) => {
         const query = e.target.value.toLowerCase();
         
-        // Recarrega todos os dados para filtrar
+        // Recarrega e filtra todos os dados para obter ofertas ativas
         const response = await fetch('offers.json');
         const allOffers = await response.json();
+        
+        // Filtra por is_active: true
+        const activeOffers = allOffers.filter(offer => offer.is_active === true); 
+
         const offersContainer = document.getElementById('offersContainer');
 
-        const filteredOffers = allOffers.filter(offer => 
+        const filteredOffers = activeOffers.filter(offer => 
             offer.city.toLowerCase().includes(query) || 
             offer.building_name.toLowerCase().includes(query) ||
             offer.location.toLowerCase().includes(query)
         );
 
-        // Renderiza as ofertas filtradas (também usando o novo template de card)
+        // Renderiza as ofertas filtradas (usando o novo template de card)
         const renderOfferCard = (offer) => {
              const roomsBathrooms = offer.rooms_bathrooms.replace(/bd \/|ba/g, '').trim();
                 return `
