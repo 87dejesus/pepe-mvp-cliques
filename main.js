@@ -1,12 +1,15 @@
-// main.js – versão limpa para o MVP do Pepe
+// main.js – versão com filtro por cidade
 
 document.addEventListener('DOMContentLoaded', () => {
   const track = document.getElementById('offersContainer');
+  const searchInput = document.getElementById('citySearch');
 
   if (!track) {
     console.error('offersContainer not found in the DOM.');
     return;
   }
+
+  let allOffers = []; // armazena todas as ofertas ativas
 
   function formatCurrency(value) {
     if (typeof value !== 'number') return '';
@@ -17,21 +20,18 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function renderOffers(offers) {
-    // remove o "Loading offers..."
     track.innerHTML = '';
 
-    const activeOffers = offers.filter(o => o.is_active !== false);
-
-    if (!activeOffers.length) {
+    if (!offers.length) {
       track.innerHTML = `
         <div class="listing-card" style="width: 100%; border: none; box-shadow: none;">
-          <p class="text-muted text-center">No active deals available right now.</p>
+          <p class="text-muted text-center">No deals found for this search.</p>
         </div>
       `;
       return;
     }
 
-    activeOffers.forEach(offer => {
+    offers.forEach(offer => {
       const minPrice = formatCurrency(offer.monthly_rent_min);
       const maxPrice = offer.monthly_rent_max
         ? formatCurrency(offer.monthly_rent_max)
@@ -43,11 +43,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const card = document.createElement('div');
       card.className = 'listing-card';
 
+      // badge simples: IL para Chicago, FL para o resto (por enquanto)
+      const badge = offer.city === 'Chicago' ? 'IL' : 'FL';
+
       card.innerHTML = `
         <div class="listing-photo" style="background-image: url('${offer.photo_url}');">
-          <span class="city-badge">${
-            offer.city === 'Chicago' ? 'IL' : 'FL'
-          }</span>
+          <span class="city-badge">${badge}</span>
         </div>
 
         <div class="listing-body">
@@ -86,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // carrega o arquivo offers.json na mesma pasta do index.html
+  // carrega todas as ofertas
   fetch('offers.json')
     .then(response => {
       if (!response.ok) {
@@ -98,7 +99,31 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!Array.isArray(data)) {
         throw new Error('offers.json is not an array');
       }
-      renderOffers(data);
+
+      // pega só as ativas
+      allOffers = data.filter(o => o.is_active !== false);
+
+      renderOffers(allOffers);
+
+      // ativa o filtro por cidade
+      if (searchInput) {
+        searchInput.addEventListener('input', () => {
+          const q = searchInput.value.trim().toLowerCase();
+
+          if (q === '') {
+            renderOffers(allOffers);
+            return;
+          }
+
+          const filtered = allOffers.filter(o => {
+            const city = (o.city || '').toLowerCase();
+            const location = (o.location || '').toLowerCase();
+            return city.includes(q) || location.includes(q);
+          });
+
+          renderOffers(filtered);
+        });
+      }
     })
     .catch(error => {
       console.error('Error loading offers.json:', error);
