@@ -420,17 +420,59 @@
     "is_active": true
   },
   {
-  "id": "31",
-  "city": "Chicago",
-  "building_name": "Upshore Residences",
-  "location": "4555 N Sheridan Rd, Chicago, IL 60640",
-  "rooms_bathrooms": "Studio - 2 bd / 1 - 2 ba",
-  "monthly_rent_min": 1929.00,
-  "monthly_rent_max": 2707.00,
-  "monthly_savings": 1000.00,
-  "discount_type": "Special Offer: Two-Bedrooms starting at $2,695 Call the leasing office to earn a $1,000 move-in credit for 2-bedroom leases starting on or before 12/15/15 *Limited time offer, restrictions apply",
-  "offer_url": "https://www.apartments.com/upshore-residences-chicago-il/r8h0yt1/",
-  "photo_url": "/imagens/upshore-residences.jpg",
-  "is_active": true
-}
+    "id": "31",
+    "city": "Chicago",
+    "building_name": "Upshore Residences",
+    "location": "4555 N Sheridan Rd, Chicago, IL 60640",
+    "rooms_bathrooms": "Studio - 2 bd / 1 - 2 ba",
+    "monthly_rent_min": 1929.00,
+    "monthly_rent_max": 2707.00,
+    "monthly_savings": 1000.00,
+    "discount_type": "Special Offer: Two-Bedrooms starting at $2,695 Call the leasing office to earn a $1,000 move-in credit for 2-bedroom leases starting on or before 12/15/15 *Limited time offer, restrictions apply",
+    "offer_url": "https://www.apartments.com/upshore-residences-chicago-il/r8h0yt1/",
+    "photo_url": "/imagens/upshore-residences.jpg",
+    "is_active": true
+  },
+  {
+    "id": "32",
+    "city": "Chicago",
+    "building_name": "Shoreham and Tides",
+    "location": "400 E South Water St, Chicago, IL 60601",
+    "rooms_bathrooms": "Studio - 2 bd / 1 - 2 ba",
+    "monthly_rent_min": 2455.00,
+    "monthly_rent_max": 7508.00,
+    "monthly_savings": 1500.00,
+    "discount_type": "$1,500 OFF your rent at Tides only",
+    "offer_url": "https://www.apartments.com/shoreham-and-tides-chicago-il/gn61yxz/",
+    "photo_url": "/imagens/shoreham-tides.jpg",
+    "is_active": true
+  },
+  {
+    "id": "33",
+    "city": "Chicago",
+    "building_name": "Lake Meadows Apartments",
+    "location": "3233 S King Dr, Chicago, IL 60616",
+    "rooms_bathrooms": "Studio - 3 bd / 1 - 2 ba",
+    "monthly_rent_min": 1030.00,
+    "monthly_rent_max": 3960.00,
+    "monthly_savings": 1030.00,
+    "discount_type": "1 Month FREE RENT on 17+ month leases",
+    "offer_url": "https://www.apartments.com/lake-meadows-apartments-chicago-il/0xhjzp2/",
+    "photo_url": "/imagens/lake-meadows.jpg",
+    "is_active": true
+  },
+  {
+    "id": "34",
+    "city": "Chicago",
+    "building_name": "Hubbard Place",
+    "location": "360 W Hubbard St, Chicago, IL 60654",
+    "rooms_bathrooms": "Studio - 2 bd / 1 - 2 ba",
+    "monthly_rent_min": 2451.00,
+    "monthly_rent_max": 5502.00,
+    "monthly_savings": 1500.00,
+    "discount_type": "$1,500 base rent sign-on bonus",
+    "offer_url": "https://www.apartments.com/hubbard-place-chicago-il/820mn21/",
+    "photo_url": "/imagens/hubbard-place.jpg",
+    "is_active": true
+  }
 ]
