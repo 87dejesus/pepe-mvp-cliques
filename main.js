@@ -1,123 +1,113 @@
+// main.js – versão limpa para trabalhar com o seu offers.json atual
+
 document.addEventListener('DOMContentLoaded', () => {
-    // Função principal para carregar e exibir as ofertas
-    const loadOffers = async () => {
-        try {
-            // 1. Fetch dos dados do offers.json
-            const response = await fetch('offers.json');
-            const allOffers = await response.json();
-            
-            // 2. FILTRAGEM OBRIGATÓRIA: Usar apenas ofertas com "is_active": true
-            const activeOffers = allOffers.filter(offer => offer.is_active === true);
-            
-            // 3. Elemento onde as ofertas principais serão injetadas:
-            const offersContainer = document.getElementById('offersContainer');
+  const containerId = 'all-deals-container'; // TROQUE aqui se seu id for outro
+  const errorId = 'all-deals-error';         // opcional, se tiver um <p> só para erro
 
-            // 4. Função para renderizar um card de oferta
-            const renderOfferCard = (offer) => {
-                // Remove o 'bd / ba' para que o texto fique mais limpo no card
-                const roomsBathrooms = offer.rooms_bathrooms.replace(/bd \/|ba/g, '').trim();
-                
-                // Cria o HTML do card usando a classe 'listing-card' e target="_blank"
-                return `
-                    <div class="listing-card">
-                        <div class="listing-photo" style="background-image: url('${offer.photo_url}');">
-                            <span class="city-badge">${offer.location.includes('FL') ? 'FL' : 'IL'}</span>
-                        </div>
-                        
-                        <div class="listing-body">
-                            <p class="offer-type">💰 ${offer.discount_type}</p>
-                            <h3>${offer.building_name}</h3>
-                            <p class="location">${offer.location}</p>
-                            
-                            <div class="details-row">
-                                <p>Bed: ${roomsBathrooms.split('/')[0].trim()}</p>
-                                <p>Bath: ${roomsBathrooms.split('/')[1].trim()}</p>
-                            </div>
-                            
-                            <p class="price-range">Min: $${offer.monthly_rent_min.toFixed(2)}</p>
-                            <a href="${offer.offer_url}" class="details-button" target="_blank" rel="noopener noreferrer">Details</a>
-                        </div>
-                    </div>
-                `;
-            };
+  const dealsContainer = document.getElementById(containerId);
+  const errorElement = document.getElementById(errorId);
 
-            // 5. Carregar TODAS as ofertas ATIVAS para a listagem principal
-            let mainOffers = activeOffers;
-            
-            // Ordena as ofertas por city (para agrupar), depois por rent_min
-            mainOffers.sort((a, b) => {
-                if (a.city < b.city) return -1;
-                if (a.city > b.city) return 1;
-                return a.monthly_rent_min - b.monthly_rent_min;
-            });
+  function showError(message) {
+    console.error(message);
+    if (errorElement) {
+      errorElement.textContent = message;
+      errorElement.style.display = 'block';
+    }
+    if (dealsContainer) {
+      dealsContainer.innerHTML = '';
+    }
+  }
 
-
-            // 6. Gera o HTML de todos os cards da listagem principal
-            const offersHtml = mainOffers.map(renderOfferCard).join('');
-            
-            // 7. Injeta o HTML no container
-            offersContainer.innerHTML = offersHtml;
-
-        } catch (error) {
-            console.error('Error loading offers:', error);
-            // Mensagem de erro amigável (em inglês, conforme regra)
-            offersContainer.innerHTML = '<p class="text-danger">Failed to load offers. Please check the offers.json file.</p>';
-        }
-    };
-    
-    // 8. Lógica de Busca (Corrigida para usar apenas ofertas ativas)
-    document.getElementById('citySearch').addEventListener('input', async (e) => {
-        const query = e.target.value.toLowerCase();
-        
-        // Recarrega e filtra todos os dados para obter ofertas ativas
-        const response = await fetch('offers.json');
-        const allOffers = await response.json();
-        
-        // Filtra por is_active: true
-        const activeOffers = allOffers.filter(offer => offer.is_active === true); 
-
-        const offersContainer = document.getElementById('offersContainer');
-
-        const filteredOffers = activeOffers.filter(offer => 
-            offer.city.toLowerCase().includes(query) || 
-            offer.building_name.toLowerCase().includes(query) ||
-            offer.location.toLowerCase().includes(query)
-        );
-
-        // Renderiza as ofertas filtradas (usando o novo template de card)
-        const renderOfferCard = (offer) => {
-             const roomsBathrooms = offer.rooms_bathrooms.replace(/bd \/|ba/g, '').trim();
-                return `
-                    <div class="listing-card">
-                        <div class="listing-photo" style="background-image: url('${offer.photo_url}');">
-                            <span class="city-badge">${offer.location.includes('FL') ? 'FL' : 'IL'}</span>
-                        </div>
-                        
-                        <div class="listing-body">
-                            <p class="offer-type">💰 ${offer.discount_type}</p>
-                            <h3>${offer.building_name}</h3>
-                            <p class="location">${offer.location}</p>
-                            
-                            <div class="details-row">
-                                <p>Bed: ${roomsBathrooms.split('/')[0].trim()}</p>
-                                <p>Bath: ${roomsBathrooms.split('/')[1].trim()}</p>
-                            </div>
-                            
-                            <p class="price-range">Min: $${offer.monthly_rent_min.toFixed(2)}</p>
-                            <a href="${offer.offer_url}" class="details-button" target="_blank" rel="noopener noreferrer">Details</a>
-                        </div>
-                    </div>
-                `;
-        };
-
-        if (filteredOffers.length > 0) {
-            offersContainer.innerHTML = filteredOffers.map(renderOfferCard).join('');
-        } else {
-            // Garante que a mensagem de 'não encontrado' não quebre o layout
-            offersContainer.innerHTML = '<p class="text-muted listing-card" style="width: 100%; border: none; box-shadow: none;">No offers found matching your search criteria.</p>';
-        }
+  function formatCurrency(value) {
+    if (typeof value !== 'number') return '';
+    return value.toLocaleString('en-US', {
+      style: 'currency',
+      currency: 'USD'
     });
+  }
 
-    // Chama a função para carregar as ofertas ao iniciar a página
-    loadOffers();
+  function renderAllDeals(offers) {
+    if (!dealsContainer) {
+      console.warn('Deals container not found. Check the containerId in main.js.');
+      return;
+    }
+
+    // limpa o conteúdo (inclusive aquela mensagem vermelha fixa, se estiver dentro)
+    dealsContainer.innerHTML = '';
+
+    offers.forEach((offer) => {
+      const col = document.createElement('div');
+      // ajuste essas classes se seu grid usar outra combinação
+      col.className = 'col-md-3 mb-4';
+
+      const minPrice = formatCurrency(offer.monthly_rent_min);
+      const maxPrice = offer.monthly_rent_max
+        ? formatCurrency(offer.monthly_rent_max)
+        : null;
+      const savings = offer.monthly_savings
+        ? formatCurrency(offer.monthly_savings)
+        : null;
+
+      col.innerHTML = `
+        <div class="card h-100 shadow-sm">
+          <img src="${offer.photo_url}" class="card-img-top" alt="${offer.building_name}">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">${offer.building_name}</h5>
+            <p class="card-text mb-1">${offer.location}</p>
+            <p class="card-text fw-semibold mb-1">${offer.rooms_bathrooms}</p>
+            <p class="card-text mb-1">
+              ${
+                maxPrice
+                  ? `${minPrice} – ${maxPrice} / mo`
+                  : `${minPrice} / mo`
+              }
+            </p>
+            <div class="badge bg-success mb-2">${offer.discount_type}</div>
+            ${
+              savings
+                ? `<p class="card-text mb-2">Savings: <strong>${savings}</strong></p>`
+                : ''
+            }
+            <div class="mt-auto">
+              <a href="${offer.offer_url}"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 class="btn btn-primary w-100">
+                View Deal
+              </a>
+            </div>
+          </div>
+        </div>
+      `;
+
+      dealsContainer.appendChild(col);
+    });
+  }
+
+  // carrega o offers.json
+  fetch('offers.json')
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((offers) => {
+      if (!Array.isArray(offers)) {
+        throw new Error('offers.json is not an array');
+      }
+
+      const activeOffers = offers.filter((o) => o.is_active !== false);
+
+      if (!activeOffers.length) {
+        showError('No active offers found.');
+        return;
+      }
+
+      renderAllDeals(activeOffers);
+    })
+    .catch((error) => {
+      showError('Failed to load offers. Please check the offers.json file.');
+      console.error('Error loading offers.json:', error);
+    });
 });
