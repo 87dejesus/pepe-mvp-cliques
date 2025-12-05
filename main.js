@@ -1,21 +1,11 @@
-// main.js – versão limpa para trabalhar com o seu offers.json atual
+// main.js – versão limpa para o MVP do Pepe
 
 document.addEventListener('DOMContentLoaded', () => {
-  const containerId = 'all-deals-container'; // TROQUE aqui se seu id for outro
-  const errorId = 'all-deals-error';         // opcional, se tiver um <p> só para erro
+  const track = document.getElementById('offersContainer');
 
-  const dealsContainer = document.getElementById(containerId);
-  const errorElement = document.getElementById(errorId);
-
-  function showError(message) {
-    console.error(message);
-    if (errorElement) {
-      errorElement.textContent = message;
-      errorElement.style.display = 'block';
-    }
-    if (dealsContainer) {
-      dealsContainer.innerHTML = '';
-    }
+  if (!track) {
+    console.error('offersContainer not found in the DOM.');
+    return;
   }
 
   function formatCurrency(value) {
@@ -26,88 +16,98 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  function renderAllDeals(offers) {
-    if (!dealsContainer) {
-      console.warn('Deals container not found. Check the containerId in main.js.');
+  function renderOffers(offers) {
+    // remove o "Loading offers..."
+    track.innerHTML = '';
+
+    const activeOffers = offers.filter(o => o.is_active !== false);
+
+    if (!activeOffers.length) {
+      track.innerHTML = `
+        <div class="listing-card" style="width: 100%; border: none; box-shadow: none;">
+          <p class="text-muted text-center">No active deals available right now.</p>
+        </div>
+      `;
       return;
     }
 
-    // limpa o conteúdo (inclusive aquela mensagem vermelha fixa, se estiver dentro)
-    dealsContainer.innerHTML = '';
-
-    offers.forEach((offer) => {
-      const col = document.createElement('div');
-      // ajuste essas classes se seu grid usar outra combinação
-      col.className = 'col-md-3 mb-4';
-
+    activeOffers.forEach(offer => {
       const minPrice = formatCurrency(offer.monthly_rent_min);
       const maxPrice = offer.monthly_rent_max
         ? formatCurrency(offer.monthly_rent_max)
         : null;
-      const savings = offer.monthly_savings
+      const savings = offer.monthly_savings && offer.monthly_savings > 0
         ? formatCurrency(offer.monthly_savings)
         : null;
 
-      col.innerHTML = `
-        <div class="card h-100 shadow-sm">
-          <img src="${offer.photo_url}" class="card-img-top" alt="${offer.building_name}">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">${offer.building_name}</h5>
-            <p class="card-text mb-1">${offer.location}</p>
-            <p class="card-text fw-semibold mb-1">${offer.rooms_bathrooms}</p>
-            <p class="card-text mb-1">
-              ${
-                maxPrice
-                  ? `${minPrice} – ${maxPrice} / mo`
-                  : `${minPrice} / mo`
-              }
-            </p>
-            <div class="badge bg-success mb-2">${offer.discount_type}</div>
-            ${
-              savings
-                ? `<p class="card-text mb-2">Savings: <strong>${savings}</strong></p>`
-                : ''
-            }
-            <div class="mt-auto">
-              <a href="${offer.offer_url}"
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 class="btn btn-primary w-100">
-                View Deal
-              </a>
-            </div>
+      const card = document.createElement('div');
+      card.className = 'listing-card';
+
+      card.innerHTML = `
+        <div class="listing-photo" style="background-image: url('${offer.photo_url}');">
+          <span class="city-badge">${
+            offer.city === 'Chicago' ? 'IL' : 'FL'
+          }</span>
+        </div>
+
+        <div class="listing-body">
+          <p class="offer-type">💰 ${offer.discount_type}</p>
+          <h3>${offer.building_name}</h3>
+          <p class="location">${offer.location}</p>
+
+          <div class="details-row">
+            <p>${offer.rooms_bathrooms}</p>
           </div>
+
+          <p class="price-range">
+            ${
+              maxPrice
+                ? `${minPrice} - ${maxPrice} / mo`
+                : `${minPrice} / mo`
+            }
+          </p>
+
+          ${
+            savings
+              ? `<p class="mb-1">Savings: <strong>${savings}</strong></p>`
+              : ''
+          }
+
+          <a href="${offer.offer_url}"
+             class="details-button"
+             target="_blank"
+             rel="noopener noreferrer">
+            View Deal
+          </a>
         </div>
       `;
 
-      dealsContainer.appendChild(col);
+      track.appendChild(card);
     });
   }
 
-  // carrega o offers.json
+  // carrega o arquivo offers.json na mesma pasta do index.html
   fetch('offers.json')
-    .then((response) => {
+    .then(response => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       return response.json();
     })
-    .then((offers) => {
-      if (!Array.isArray(offers)) {
+    .then(data => {
+      if (!Array.isArray(data)) {
         throw new Error('offers.json is not an array');
       }
-
-      const activeOffers = offers.filter((o) => o.is_active !== false);
-
-      if (!activeOffers.length) {
-        showError('No active offers found.');
-        return;
-      }
-
-      renderAllDeals(activeOffers);
+      renderOffers(data);
     })
-    .catch((error) => {
-      showError('Failed to load offers. Please check the offers.json file.');
+    .catch(error => {
       console.error('Error loading offers.json:', error);
+      track.innerHTML = `
+        <div class="listing-card" style="width: 100%; border: none; box-shadow: none;">
+          <p class="text-danger text-center">
+            Failed to load offers. Please check the offers.json file.
+          </p>
+        </div>
+      `;
     });
 });
