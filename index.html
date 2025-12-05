@@ -6,12 +6,12 @@
     <title>Pepe - Real Discount Rental Offers</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* Estilos básicos para corresponder aos seus prints */
+        /* Estilos básicos existentes */
         body {
-            background-color: #f8f9fa; /* Light gray background */
+            background-color: #f8f9fa; 
         }
         .header-section {
-            background-color: #007bff; /* Blue background for header */
+            background-color: #007bff; 
             color: white;
             padding: 40px 0;
             text-align: center;
@@ -20,13 +20,7 @@
             padding: 30px 0;
             background-color: white;
         }
-        .card {
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
+        
         .footer-section {
             background-color: #f1f1f1;
             padding: 30px 0;
@@ -35,50 +29,70 @@
         .rooms-bath, .price-range {
             font-weight: bold;
         }
+
+        /* === NOVOS ESTILOS PARA CARROSSEL (Rolagem Horizontal) === */
         
-        /* === NOVOS ESTILOS PARA O CARROSSEL (PASSO 1) === */
+        /* Contêiner principal da rolagem */
+        .listing-carousel {
+            overflow-x: auto; 
+            white-space: nowrap;
+            padding-bottom: 15px; 
+            padding-left: 20px; 
+            padding-right: 20px;
+            -webkit-overflow-scrolling: touch; 
+            -ms-overflow-style: none; /* Esconde a barra de rolagem IE/Edge */
+            scrollbar-width: none; /* Esconde a barra de rolagem Firefox */
+        }
+        /* Esconde a barra de rolagem Chrome/Safari */
+        .listing-carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Contêiner interno que força o display horizontal */
+        .listing-track {
+            display: inline-flex; 
+            gap: 16px;
+        }
+
+        /* Estilo do Card individual (mantém o visual existente) */
+        .listing-card {
+            display: inline-block;
+            width: 300px; 
+            min-width: 300px;
+            white-space: normal; 
+            flex-shrink: 0;
+            
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            background-color: white;
+            margin-bottom: 5px; 
+            
+            /* Efeito hover mantido */
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .listing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        /* Estilos específicos do Weekly Update (para o cabeçalho) */
         #weekly-update {
-            padding: 20px 0;
-            background-color: #ffffff; /* Fundo branco para destaque */
+            padding-top: 20px;
+            background-color: #ffffff; 
             border-bottom: 1px solid #ddd;
         }
         
         .weekly-update-title {
-            padding: 0 20px; /* Adiciona padding nas laterais do título */
+            padding: 0 20px; 
             color: #ff4500;
             font-size: 20px;
             font-weight: bold;
             margin-bottom: 5px;
         }
 
-        .listings-carousel {
-            display: flex;
-            overflow-x: scroll; /* Permite o scroll horizontal */
-            padding: 10px 20px; /* Padding nas laterais para que o primeiro item não comece na borda */
-            gap: 15px; /* Espaço entre os cards */
-            -webkit-overflow-scrolling: touch; /* Suaviza o scroll no iOS */
-        }
-        
-        /* Remove a barra de rolagem em alguns navegadores, se desejar */
-        .listings-carousel::-webkit-scrollbar {
-            display: none;
-        }
-        .listings-carousel {
-            -ms-overflow-style: none; /* IE and Edge */
-            scrollbar-width: none; /* Firefox */
-        }
-
-        .listing-card {
-            min-width: 280px;
-            width: 280px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            background-color: white;
-            flex-shrink: 0; /* Impede que os cards encolham */
-        }
-
+        /* Estilos dos componentes internos dos cards */
         .listing-photo {
             height: 150px;
             background-size: cover;
@@ -155,100 +169,105 @@
     </section>
 
     <section id="weekly-update">
-        <p class="weekly-update-title">🔥 Weekly Update - Maior Desconto! Scroll right for all listings 👉</p>
+        <p class="weekly-update-title">🔥 Weekly Update - Biggest Discount! Scroll right for all listings 👉</p>
         
-        <div class="listings-carousel">
+        <div class="listing-carousel">
+            <div class="listing-track">
             
-            <div class="listing-card">
-                <div class="listing-photo" style="background-image: url('/imagens/pearl-pompano-beach.jpg');">
-                    <span class="city-badge">FL</span> 
-                </div>
-                
-                <div class="listing-body">
-                    <p class="offer-type">💰 Up to $6,800 in Free Rent! </p>
-                    <h3>Pearl at Pompano Beach</h3>
-                    <p class="location">Pompano Beach, FL</p>
-                    
-                    <div class="details-row">
-                        <p>Bed: 3</p>
-                        <p>Bath: 2.5</p>
+                <div class="listing-card">
+                    <div class="listing-photo" style="background-image: url('/imagens/pearl-pompano-beach.jpg');">
+                        <span class="city-badge">FL</span> 
                     </div>
                     
-                    <p class="price-range">Min: $2,949.00</p>
-                    <a href="https://www.apartments.com/pearl-at-pompano-beach-pompano-beach-fl/gs1lx9y/" class="details-button">Details</a>
-                </div>
-            </div>
-            
-            <div class="listing-card">
-                <div class="listing-photo" style="background-image: url('/imagens/logan.jpg');">
-                    <span class="city-badge">IL</span> 
+                    <div class="listing-body">
+                        <p class="offer-type">💰 Up to $6,800 in Free Rent! </p>
+                        <h3>Pearl at Pompano Beach</h3>
+                        <p class="location">Pompano Beach, FL</p>
+                        
+                        <div class="details-row">
+                            <p>Bed: 3</p>
+                            <p>Bath: 2.5</p>
+                        </div>
+                        
+                        <p class="price-range">Min: $2,949.00</p>
+                        <a href="https://www.apartments.com/pearl-at-pompano-beach-pompano-beach-fl/gs1lx9y/" class="details-button" target="_blank" rel="noopener noreferrer">Details</a>
+                    </div>
                 </div>
                 
-                <div class="listing-body">
-                    <p class="offer-type">💰 Black Friday Blitz: 6 WEEKS FREE</p>
-                    <h3>Logan</h3>
-                    <p class="location">Chicago, IL</p>
-                    
-                    <div class="details-row">
-                        <p>Bed: 1 - 2</p>
-                        <p>Bath: 1 - 2</p>
+                <div class="listing-card">
+                    <div class="listing-photo" style="background-image: url('/imagens/logan.jpg');">
+                        <span class="city-badge">IL</span> 
                     </div>
                     
-                    <p class="price-range">Min: $2,627.00</p>
-                    <a href="https://www.apartments.com/logan-chicago-il/q0yn6mw/" class="details-button">Details</a>
-                </div>
-            </div>
-            
-            <div class="listing-card">
-                <div class="listing-photo" style="background-image: url('/imagens/atlantic.jpg');">
-                    <span class="city-badge">FL</span> 
+                    <div class="listing-body">
+                        <p class="offer-type">💰 Black Friday Blitz: 6 WEEKS FREE</p>
+                        <h3>Logan</h3>
+                        <p class="location">Chicago, IL</p>
+                        
+                        <div class="details-row">
+                            <p>Bed: 1 - 2</p>
+                            <p>Bath: 1 - 2</p>
+                        </div>
+                        
+                        <p class="price-range">Min: $2,627.00</p>
+                        <a href="https://www.apartments.com/logan-chicago-il/q0yn6mw/" class="details-button" target="_blank" rel="noopener noreferrer">Details</a>
+                    </div>
                 </div>
                 
-                <div class="listing-body">
-                    <p class="offer-type">💰 Up to 2 Months Free!</p>
-                    <h3>The Atlantic by Soleste</h3>
-                    <p class="location">Pompano Beach, FL</p>
-                    
-                    <div class="details-row">
-                        <p>Bed: Studio - 2</p>
-                        <p>Bath: 1 - 2</p>
+                <div class="listing-card">
+                    <div class="listing-photo" style="background-image: url('/imagens/atlantic.jpg');">
+                        <span class="city-badge">FL</span> 
                     </div>
                     
-                    <p class="price-range">Min: $1,908.00</p>
-                    <a href="https://www.apartments.com/the-atlantic-by-soleste-pompano-beach-fl/29wsy58/" class="details-button">Details</a>
+                    <div class="listing-body">
+                        <p class="offer-type">💰 Up to 2 Months Free!</p>
+                        <h3>The Atlantic by Soleste</h3>
+                        <p class="location">Pompano Beach, FL</p>
+                        
+                        <div class="details-row">
+                            <p>Bed: Studio - 2</p>
+                            <p>Bath: 1 - 2</p>
+                        </div>
+                        
+                        <p class="price-range">Min: $1,908.00</p>
+                        <a href="https://www.apartments.com/the-atlantic-by-soleste-pompano-beach-fl/29wsy58/" class="details-button" target="_blank" rel="noopener noreferrer">Details</a>
+                    </div>
                 </div>
-            </div>
 
-            <div class="listing-card">
-                <div class="listing-photo" style="background-image: url('/imagens/old-town-square.jpg');">
-                    <span class="city-badge">FL</span> 
-                </div>
-                
-                <div class="listing-body">
-                    <p class="offer-type">💰 Up to 2 Months Free!</p>
-                    <h3>Old Town Square</h3>
-                    <p class="location">Pompano Beach, FL</p>
-                    
-                    <div class="details-row">
-                        <p>Bed: Studio - 2</p>
-                        <p>Bath: 1 - 2.5</p>
+                <div class="listing-card">
+                    <div class="listing-photo" style="background-image: url('/imagens/old-town-square.jpg');">
+                        <span class="city-badge">FL</span> 
                     </div>
                     
-                    <p class="price-range">Min: $1,860.00</p>
-                    <a href="https://www.apartments.com/old-town-square-pompano-beach-fl/eg61cpn/" class="details-button">Details</a>
+                    <div class="listing-body">
+                        <p class="offer-type">💰 Up to 2 Months Free!</p>
+                        <h3>Old Town Square</h3>
+                        <p class="location">Pompano Beach, FL</p>
+                        
+                        <div class="details-row">
+                            <p>Bed: Studio - 2</p>
+                            <p>Bath: 1 - 2.5</p>
+                        </div>
+                        
+                        <p class="price-range">Min: $1,860.00</p>
+                        <a href="https://www.apartments.com/old-town-square-pompano-beach-fl/eg61cpn/" class="details-button" target="_blank" rel="noopener noreferrer">Details</a>
+                    </div>
                 </div>
-            </div>
             
+            </div>
         </div>
     </section>
     <section class="container my-5">
-        <div class="row" id="offersContainer">
-            <div class="col-12 text-center">
-                <p class="text-muted">Loading offers...</p>
+        <h2 class="h4 fw-bold mb-3" style="padding: 0 20px;">All Available Deals</h2>
+        
+        <div class="listing-carousel">
+            <div class="listing-track" id="offersContainer">
+                <div class="col-12 text-center listing-card" style="width: 100%; border: none; box-shadow: none;">
+                    <p class="text-muted">Loading offers...</p>
+                </div>
             </div>
         </div>
     </section>
-
     <footer class="footer-section">
         <div class="container">
             <div class="row">
@@ -262,10 +281,10 @@
                 <div class="col-md-4">
                     <h5>City Guides</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-decoration-none text-primary">Pompano Beach, FL</a></li>
-                        <li><a href="#" class="text-decoration-none text-primary">Fort Lauderdale, FL</a></li>
-                        <li><a href="#" class="text-decoration-none text-primary">Deerfield Beach, FL</a></li>
-                        <li><a href="#" class="text-decoration-none text-primary">Chicago, IL</a></li>
+                        <li><a href="#" class="text-decoration-none text-primary">Pompano Beach, FL Guide</a></li>
+                        <li><a href="#" class="text-decoration-none text-primary">Fort Lauderdale, FL Guide</a></li>
+                        <li><a href="#" class="text-decoration-none text-primary">Deerfield Beach, FL Guide</a></li>
+                        <li><a href="#" class="text-decoration-none text-primary">Chicago, IL Guide</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4">
@@ -274,7 +293,7 @@
                         <li><a href="terms-of-use.html" class="text-decoration-none text-primary">Terms of Use</a></li>
                         <li><a href="privacy-policy.html" class="text-decoration-none text-primary">Privacy Policy</a></li>
                         <li><a href="scams-and-cautions.html" class="text-decoration-none text-primary">Scams and Rental Cautions</a></li>
-                        </ul>
+                    </ul>
                 </div>
             </div>
             <hr>
