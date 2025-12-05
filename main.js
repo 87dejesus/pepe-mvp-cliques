@@ -1,4 +1,4 @@
-// main.js – versão com filtro por cidade
+// main.js – versão com filtro por cidade e botão "Report Scam"
 
 document.addEventListener('DOMContentLoaded', () => {
   const track = document.getElementById('offersContainer');
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const card = document.createElement('div');
       card.className = 'listing-card';
 
-      // badge simples: IL para Chicago, FL para o resto (por enquanto)
+      // Badge simples: IL para Chicago, FL para o resto
       const badge = offer.city === 'Chicago' ? 'IL' : 'FL';
 
       card.innerHTML = `
@@ -80,6 +80,10 @@ document.addEventListener('DOMContentLoaded', () => {
              rel="noopener noreferrer">
             View Deal
           </a>
+
+          <p class="report-link">
+            <a href="report.html?listing=${offer.id}" class="text-muted small">Report Scam</a>
+          </p>
         </div>
       `;
 
