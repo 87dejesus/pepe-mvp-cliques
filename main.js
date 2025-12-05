@@ -1,106 +1,122 @@
-let allOffers = []; // Variável global para armazenar todas as ofertas
-
-// A função principal que carrega os dados
-function loadOffers() {
-    // 1. Busca os dados do arquivo offers.json
-    fetch('offers.json')
-        .then(response => {
-            // Verifica se a resposta HTTP foi bem-sucedida (status 200)
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(offersData => {
-            allOffers = offersData; // Armazena os dados globalmente
-            renderOffers(allOffers); // Renderiza todas as ofertas inicialmente
-            setupSearchListener(); // Configura o filtro após o carregamento
-        })
-        .catch(error => {
-            // 3. Em caso de erro, exibe uma mensagem no console e na tela.
-            console.error('Failed to load or parse offers. The file may be missing or have a syntax error:', error);
-
+document.addEventListener('DOMContentLoaded', () => {
+    // Função principal para carregar e exibir as ofertas
+    const loadOffers = async () => {
+        try {
+            // 1. Fetch dos dados do offers.json
+            const response = await fetch('offers.json');
+            const offers = await response.json();
+            
+            // 2. Elemento onde as ofertas principais serão injetadas:
+            // Ele é o novo container com a classe 'listing-track'
             const offersContainer = document.getElementById('offersContainer');
-            if (offersContainer) {
-                offersContainer.innerHTML = `
-                    <div class="col-12 text-center my-5">
-                        <p class="text-danger font-weight-bold">Ocorreu um erro ao carregar as ofertas. Por favor, verifique o arquivo 'offers.json'.</p>
+
+            // 3. Função para renderizar um card de oferta
+            const renderOfferCard = (offer) => {
+                // Remove o 'bd / ba' para que o texto fique mais limpo no card
+                const roomsBathrooms = offer.rooms_bathrooms.replace(/bd \/|ba/g, '').trim();
+                
+                // Cria o HTML do card usando a nova classe 'listing-card'
+                // E garante que o link abre em uma nova aba (target="_blank")
+                return `
+                    <div class="listing-card">
+                        <div class="listing-photo" style="background-image: url('${offer.photo_url}');">
+                            <span class="city-badge">${offer.location.includes('FL') ? 'FL' : 'IL'}</span>
+                        </div>
+                        
+                        <div class="listing-body">
+                            <p class="offer-type">💰 ${offer.discount_type}</p>
+                            <h3>${offer.building_name}</h3>
+                            <p class="location">${offer.location}</p>
+                            
+                            <div class="details-row">
+                                <p>Bed: ${roomsBathrooms.split('/')[0].trim()}</p>
+                                <p>Bath: ${roomsBathrooms.split('/')[1].trim()}</p>
+                            </div>
+                            
+                            <p class="price-range">Min: $${offer.monthly_rent_min.toFixed(2)}</p>
+                            <a href="${offer.offer_url}" class="details-button" target="_blank" rel="noopener noreferrer">Details</a>
+                        </div>
                     </div>
                 `;
-            }
-        });
-}
+            };
 
-// NOVO: Função para configurar o Listener de Busca
-function setupSearchListener() {
-    const searchInput = document.getElementById('citySearch');
-    if (searchInput) {
-        // Escuta o evento 'input' (dispara a cada tecla digitada)
-        searchInput.addEventListener('input', (event) => {
-            const searchTerm = event.target.value.toLowerCase().trim();
-            filterOffers(searchTerm);
-        });
-    }
-}
-
-// NOVO: Função para filtrar as ofertas
-function filterOffers(searchTerm) {
-    const filteredOffers = allOffers.filter(offer => 
-        // Filtra por cidade (case-insensitive)
-        offer.city.toLowerCase().includes(searchTerm) ||
-        // Filtra também por nome do prédio (opcional, mas útil)
-        offer.building_name.toLowerCase().includes(searchTerm)
-    );
-    renderOffers(filteredOffers);
-}
+            // 4. Filtrar e ordenar as ofertas para a listagem principal (Excluindo as 4 já no Weekly Update)
+            
+            // IDs das 4 ofertas que estão fixas no Weekly Update (para evitar duplicação)
+            const weeklyUpdateIds = ["13", "29", "1", "2"]; 
+            
+            // Filtra ofertas que NÃO estão no Weekly Update
+            let mainOffers = offers.filter(offer => !weeklyUpdateIds.includes(offer.id));
+            
+            // Ordena as ofertas por city (para agrupar), depois por rent_min
+            mainOffers.sort((a, b) => {
+                if (a.city < b.city) return -1;
+                if (a.city > b.city) return 1;
+                return a.monthly_rent_min - b.monthly_rent_min;
+            });
 
 
-// Função para renderizar as ofertas no HTML
-function renderOffers(offers) {
-    const offersContainer = document.getElementById('offersContainer');
-    if (!offersContainer) return;
+            // 5. Gera o HTML de todos os cards da listagem principal
+            const offersHtml = mainOffers.map(renderOfferCard).join('');
+            
+            // 6. Injeta o HTML no container
+            offersContainer.innerHTML = offersHtml;
 
-    offersContainer.innerHTML = ''; 
-
-    // Função para formatar o valor como moeda USD
-    const formatCurrency = (value) => {
-        return value.toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2 });
+        } catch (error) {
+            console.error('Erro ao carregar ofertas:', error);
+            // Mensagem de erro amigável
+            offersContainer.innerHTML = '<p class="text-danger">Failed to load offers. Please check the offers.json file.</p>';
+        }
     };
-
-    const activeOffers = offers.filter(offer => offer.is_active);
-
-    activeOffers.forEach(offer => {
-        const savingsText = offer.monthly_savings > 0 ? `<p class="savings-text">Savings: ${formatCurrency(offer.monthly_savings)}</p>` : '';
-        const rentDisplay = offer.monthly_rent_max > 0 && offer.monthly_rent_min !== offer.monthly_rent_max
-            ? `${formatCurrency(offer.monthly_rent_min)} - ${formatCurrency(offer.monthly_rent_max)}`
-            : formatCurrency(offer.monthly_rent_min);
-
-        const card = document.createElement('div');
-        card.className = 'col-lg-4 col-md-6 mb-4';
-        card.innerHTML = `
-            <div class="card h-100 shadow-sm border-0">
-                <img src="${offer.photo_url}" class="card-img-top" alt="${offer.building_name}" style="height: 200px; object-fit: cover;">
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">${offer.building_name}</h5>
-                    <p class="card-text text-muted mb-1">${offer.location}</p>
-                    <p class="card-text rooms-bath">${offer.rooms_bathrooms}</p>
-                    <h6 class="price-range">${rentDisplay} / mo</h6>
-                    <span class="badge bg-success mb-2">${offer.discount_type}</span>
-                    ${savingsText}
-                    <div class="mt-auto">
-                        <a href="${offer.offer_url}" target="_blank" class="btn btn-primary w-100">View Deal</a>
-                    </div>
-                </div>
-            </div>
-        `;
-        offersContainer.appendChild(card);
-    });
     
-    if (activeOffers.length === 0) {
-         offersContainer.innerHTML = '<div class="col-12"><p class="text-center text-muted">No active offers found for this search.</p></div>';
-    }
-}
+    // 7. Lógica de Busca (Simplificada)
+    document.getElementById('citySearch').addEventListener('input', async (e) => {
+        const query = e.target.value.toLowerCase();
+        
+        // Recarrega todos os dados para filtrar
+        const response = await fetch('offers.json');
+        const allOffers = await response.json();
+        const offersContainer = document.getElementById('offersContainer');
 
+        const filteredOffers = allOffers.filter(offer => 
+            offer.city.toLowerCase().includes(query) || 
+            offer.building_name.toLowerCase().includes(query) ||
+            offer.location.toLowerCase().includes(query)
+        );
 
-// GARANTIA DE CARREGAMENTO: Inicia a função loadOffers somente após o HTML estar pronto.
-document.addEventListener('DOMContentLoaded', loadOffers);
+        // Renderiza as ofertas filtradas (também usando o novo template de card)
+        const renderOfferCard = (offer) => {
+             const roomsBathrooms = offer.rooms_bathrooms.replace(/bd \/|ba/g, '').trim();
+                return `
+                    <div class="listing-card">
+                        <div class="listing-photo" style="background-image: url('${offer.photo_url}');">
+                            <span class="city-badge">${offer.location.includes('FL') ? 'FL' : 'IL'}</span>
+                        </div>
+                        
+                        <div class="listing-body">
+                            <p class="offer-type">💰 ${offer.discount_type}</p>
+                            <h3>${offer.building_name}</h3>
+                            <p class="location">${offer.location}</p>
+                            
+                            <div class="details-row">
+                                <p>Bed: ${roomsBathrooms.split('/')[0].trim()}</p>
+                                <p>Bath: ${roomsBathrooms.split('/')[1].trim()}</p>
+                            </div>
+                            
+                            <p class="price-range">Min: $${offer.monthly_rent_min.toFixed(2)}</p>
+                            <a href="${offer.offer_url}" class="details-button" target="_blank" rel="noopener noreferrer">Details</a>
+                        </div>
+                    </div>
+                `;
+        };
+
+        if (filteredOffers.length > 0) {
+            offersContainer.innerHTML = filteredOffers.map(renderOfferCard).join('');
+        } else {
+            offersContainer.innerHTML = '<p class="text-muted listing-card" style="width: 100%; border: none; box-shadow: none;">No offers found matching your search criteria.</p>';
+        }
+    });
+
+    // Chama a função para carregar as ofertas ao iniciar a página
+    loadOffers();
+});
