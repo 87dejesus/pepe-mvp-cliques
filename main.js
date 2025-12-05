@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const offers = await response.json();
             
             // 2. Elemento onde as ofertas principais serão injetadas:
-            // Ele é o novo container com a classe 'listing-track'
             const offersContainer = document.getElementById('offersContainer');
 
             // 3. Função para renderizar um card de oferta
@@ -15,8 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Remove o 'bd / ba' para que o texto fique mais limpo no card
                 const roomsBathrooms = offer.rooms_bathrooms.replace(/bd \/|ba/g, '').trim();
                 
-                // Cria o HTML do card usando a nova classe 'listing-card'
-                // E garante que o link abre em uma nova aba (target="_blank")
+                // Cria o HTML do card usando a classe 'listing-card'
+                // E garante que o link abra em uma nova aba (target="_blank")
                 return `
                     <div class="listing-card">
                         <div class="listing-photo" style="background-image: url('${offer.photo_url}');">
@@ -43,6 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // 4. Filtrar e ordenar as ofertas para a listagem principal (Excluindo as 4 já no Weekly Update)
             
             // IDs das 4 ofertas que estão fixas no Weekly Update (para evitar duplicação)
+            // (Baseado nos maiores descontos: Pearl, Logan, Atlantic, Old Town Square)
             const weeklyUpdateIds = ["13", "29", "1", "2"]; 
             
             // Filtra ofertas que NÃO estão no Weekly Update
@@ -63,13 +63,13 @@ document.addEventListener('DOMContentLoaded', () => {
             offersContainer.innerHTML = offersHtml;
 
         } catch (error) {
-            console.error('Erro ao carregar ofertas:', error);
-            // Mensagem de erro amigável
+            console.error('Error loading offers:', error);
+            // Mensagem de erro amigável (em inglês, conforme regra)
             offersContainer.innerHTML = '<p class="text-danger">Failed to load offers. Please check the offers.json file.</p>';
         }
     };
     
-    // 7. Lógica de Busca (Simplificada)
+    // 7. Lógica de Busca (Atualizada para Carrossel)
     document.getElementById('citySearch').addEventListener('input', async (e) => {
         const query = e.target.value.toLowerCase();
         
@@ -113,6 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (filteredOffers.length > 0) {
             offersContainer.innerHTML = filteredOffers.map(renderOfferCard).join('');
         } else {
+            // Garante que a mensagem de 'não encontrado' não quebre o layout
             offersContainer.innerHTML = '<p class="text-muted listing-card" style="width: 100%; border: none; box-shadow: none;">No offers found matching your search criteria.</p>';
         }
     });
