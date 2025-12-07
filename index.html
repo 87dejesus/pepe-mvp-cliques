@@ -1,149 +1,75 @@
-// main.js – Pepe Deals
-// Carrega offers.json, renderiza os cards em carrossel horizontal
-// e deixa pronto para o filtro por cidade.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pepe Deals – Real Discount Rental Offers</title>
 
-document.addEventListener('DOMContentLoaded', () => {
-  const offersContainer = document.getElementById('offersContainer');
-  const citySearchInput = document.getElementById('citySearch');
+    <link href="styles.css" rel="stylesheet" />
 
-  let allOffers = [];
+    <!-- SEO básico (melhoramos amanhã) -->
+    <meta name="description" content="Find real rental discounts, verified specials, and limited-time deals on apartments across the US." />
+</head>
 
-  // --- Utilidades ---
+<body>
 
-  // Pega o código do estado (FL, IL, etc.) a partir de "location"
-  function getStateCode(location) {
-    if (!location) return '';
-    const parts = location.split(',');
-    const lastPart = parts[parts.length - 1].trim();
-    const match = lastPart.match(/\b([A-Z]{2})\b/);
-    return match ? match[1] : '';
-  }
+<!-- HEADER -->
+<header class="hero-section">
+    <h1>Pepe – Real Discount Rental Offers</h1>
+    <p>Your source for the best apartment and rental deals in the US.</p>
+</header>
 
-  function formatCurrency(value) {
-    if (typeof value !== 'number') return '';
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-      minimumFractionDigits: 2
-    }).format(value);
-  }
+<!-- SEARCH BAR -->
+<section class="search-container">
+    <input
+        type="text"
+        id="citySearch"
+        placeholder="Search by City (Pompano Beach, Fort Lauderdale, Chicago...)"
+    />
+</section>
 
-  function createCard(offer) {
-    const stateCode = getStateCode(offer.location);
-    const minRent = formatCurrency(offer.monthly_rent_min);
-    const maxRent = offer.monthly_rent_max
-      ? formatCurrency(offer.monthly_rent_max)
-      : null;
-    const savings = offer.monthly_savings && offer.monthly_savings > 0
-      ? formatCurrency(offer.monthly_savings)
-      : null;
+<!-- SUBTÍTULO BONITO -->
+<section class="subtitle-wrapper">
+    <div class="subtitle-box">
+        <h4 class="subtitle-text">
+            Looking for a new place? We help you save money by showing only rental listings with actual specials, incentives, and verified discounts.
+        </h4>
+    </div>
+</section>
 
-    const card = document.createElement('div');
-    card.className = 'listing-card';
+<!-- LISTINGS SECTION -->
+<section class="listings-section">
+    <h2>All Available Deals</h2>
 
-    card.innerHTML = `
-      <div class="listing-photo" style="background-image: url('${offer.photo_url}');">
-        <span class="city-badge">${stateCode}</span>
-      </div>
-      <div class="listing-body">
-        <p class="offer-type">💰 ${offer.discount_type}</p>
-        <h3>${offer.building_name}</h3>
-        <p class="location">${offer.location}</p>
+    <!-- carrossel horizontal -->
+    <div id="offersContainer" class="offers-carousel"></div>
+</section>
 
-        <p class="mb-1">${offer.rooms_bathrooms}</p>
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-col">
+        <h4>Pepe Deals</h4>
+        <p><a href="#">About Us</a></p>
+        <p><a href="#">How We Save You Money</a></p>
+    </div>
 
-        <p class="price-range">
-          ${minRent}
-          ${maxRent ? ` - ${maxRent}` : ''} / mo
-        </p>
+    <div class="footer-col">
+        <h4>City Guides</h4>
+        <p><a href="#">Pompano Beach, FL Guide</a></p>
+        <p><a href="#">Fort Lauderdale, FL Guide</a></p>
+        <p><a href="#">Chicago, IL Guide</a></p>
+    </div>
 
-        ${
-          savings
-            ? `<p class="mb-1">Savings: <strong>${savings}</strong></p>`
-            : ''
-        }
+    <div class="footer-col">
+        <h4>Help & Legal</h4>
+        <p><a href="#">Terms of Use</a></p>
+        <p><a href="#">Privacy Policy</a></p>
+        <p><a href="#">Scams and Rental Cautions</a></p>
+    </div>
+</footer>
 
-        <a href="${offer.offer_url}"
-           class="details-button"
-           target="_blank"
-           rel="noopener noreferrer">
-          View Deal
-        </a>
+<!-- JS -->
+<script src="main.js"></script>
 
-        <a href="report.html?listing=${encodeURIComponent(
-          offer.building_name
-        )}"
-           class="d-block mt-2 text-center text-muted"
-           style="font-size: 0.85rem; text-decoration: none;">
-          Report Scam
-        </a>
-      </div>
-    `;
-
-    return card;
-  }
-
-  function renderOffers(list) {
-    offersContainer.innerHTML = '';
-
-    if (!list || list.length === 0) {
-      const empty = document.createElement('div');
-      empty.className = 'col-12 text-center listing-card';
-      empty.style.width = '100%';
-      empty.style.border = 'none';
-      empty.style.boxShadow = 'none';
-      empty.innerHTML = `<p class="text-muted">No deals found for this search.</p>`;
-      offersContainer.appendChild(empty);
-      return;
-    }
-
-    list.forEach(offer => {
-      const card = createCard(offer);
-      offersContainer.appendChild(card);
-    });
-  }
-
-  // --- Carrega JSON ---
-
-  fetch('offers.json')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Failed to load offers.json');
-      }
-      return response.json();
-    })
-    .then(data => {
-      // filtra só ativos
-      allOffers = (data || []).filter(o => o.is_active !== false);
-      renderOffers(allOffers);
-    })
-    .catch(error => {
-      console.error(error);
-      offersContainer.innerHTML = `
-        <div class="col-12 text-center listing-card" style="width: 100%; border: none; box-shadow: none;">
-          <p class="text-danger">Failed to load offers. Please check the offers.json file.</p>
-        </div>
-      `;
-    });
-
-  // --- Filtro por cidade ---
-
-  if (citySearchInput) {
-    citySearchInput.addEventListener('input', e => {
-      const term = e.target.value.trim().toLowerCase();
-
-      if (!term) {
-        renderOffers(allOffers);
-        return;
-      }
-
-      const filtered = allOffers.filter(offer => {
-        const city = (offer.city || '').toLowerCase();
-        const location = (offer.location || '').toLowerCase();
-        return city.includes(term) || location.includes(term);
-      });
-
-      renderOffers(filtered);
-    });
-  }
-});
+</body>
+</html>
