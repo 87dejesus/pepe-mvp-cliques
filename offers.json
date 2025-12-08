@@ -866,5 +866,62 @@
     "offer_url": "https://www.apartments.com/venue-residences-los-angeles-ca/ggrmm7x/",
     "photo_url": "/imagens/venue-residences.jpg",
     "is_active": true
+  },
+  {
+    "id": "63",
+    "city": "Canoga Park",
+    "building_name": "Sync on Conoga",
+    "location": "7019 Canoga Ave, Canoga Park, CA 91303",
+    "rooms_bathrooms": "1 bd / 1 ba",
+    "monthly_rent_min": 1911.00,
+    "monthly_rent_max": 2608.00,
+    "monthly_savings": 3822.00,
+    "discount_type": "Receive 2 Months Free Rent on a 14-Month Lease Plus a $500 Amex Gift Card for All 2025 Move-Ins Rents starting at $1,911/month. Limited availability. Offer available on select units only. Advertised pricing reflects the net effective rent after free rent has been applied to a 12 or 14 month lease. BRAND NEW MODERN APARTMENT HOMES • NOW LEASING AND AVAILABLE FOR IMMEDIATE MOVE-INS.",
+    "offer_url": "https://www.apartments.com/sync-on-conoga-canoga-park-ca/lndmf7g/",
+    "photo_url": "/imagens/sync-on-conoga.jpg",
+    "is_active": true
+  },
+  {
+    "id": "64",
+    "city": "Canoga Park",
+    "building_name": "PENDANT on Topanga",
+    "location": "7322 Topanga Canyon Blvd, Canoga Park, CA 91303",
+    "rooms_bathrooms": "Studio - 2 bd / 1 - 2 ba",
+    "monthly_rent_min": 1776.00,
+    "monthly_rent_max": 3028.00,
+    "monthly_savings": 2664.00,
+    "discount_type": "Receive 6 Weeks Free Rent on a 12-Month Lease Plus a $500 Amex Gift Card for All 2025 Move-Ins Rents starting at $1,829/mo. Limited availability. Offer available on select units only. Advertised pricing reflects the net effective rent after free rent has been applied to a 12 or 14 month lease. BRAND NEW MODERN APARTMENT HOMES • NOW LEASING AND AVAILABLE FOR IMMEDIATE MOVE-INS.",
+    "offer_url": "https://www.apartments.com/pendant-on-topanga-canoga-park-ca/m3q9hll/",
+    "photo_url": "/imagens/pendant-on-topanga.jpg",
+    "is_active": true
+  },
+  {
+    "id": "65",
+    "city": "West Hollywood",
+    "building_name": "Crescent at West Hollywood",
+    "location": "1274 N Crescent Heights Blvd, West Hollywood, CA 90046",
+    "rooms_bathrooms": "1 - 2 bd / 1 - 2 ba",
+    "monthly_rent_min": 2550.00,
+    "monthly_rent_max": 3175.00,
+    "monthly_savings": 2550.00,
+    "discount_type": "Up To One Month Free On Approved Application on Select Apartment Homes, Stop By Today to Tour",
+    "offer_url": "https://www.apartments.com/crescent-at-west-hollywood-west-hollywood-ca/9j9sy56/",
+    "photo_url": "/imagens/crescent-at-west-hollywood.jpg",
+    "is_active": true
+  },
+  {
+    "id": "66",
+    "city": "Los Angeles",
+    "building_name": "Atlas House",
+    "location": "2500 Wilshire Blvd, Los Angeles, CA 90057",
+    "rooms_bathrooms": "Studio - 2 bd / 1 - 2 ba",
+    "monthly_rent_min": 1774.00,
+    "monthly_rent_max": 3255.00,
+    "monthly_savings": 6435.00,
+    "discount_type": "2.5 Months FREE + 1 Free Parking! + $2000 Look & Lease Special (Apply same day & sign within 24 hrs). Short-term and furnished options available! *Prices listed already include the discount*",
+    "offer_url": "https://www.apartments.com/atlas-house-los-angeles-ca/j8slxt6/",
+    "photo_url": "/imagens/atlas-house.jpg",
+    "is_active": true
   }
+]
 ]
